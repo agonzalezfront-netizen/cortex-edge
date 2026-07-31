@@ -7,8 +7,8 @@
     {
       "name": "cortex-edge",
       "source": "./plugins/cortex-edge",
-      "description": "Turns Claude Code into a refined second brain: persistent memory across sessions, a rigorous critical stance, and /start + /close continuity. EN/ES."
+      "description": "Turns Claude Code into a collaborator that remembers you, challenges you, and picks up where you left off: persistent memory across sessions, a rigorous critical stance (never a yes-man), session continuity, and a curated skills catalog it installs for you. Bilingual EN/ES."
     }
   ],
-  "description": "Cortex Edge — modular toolkit that turns Claude Code into a refined second brain. Memory, critical stance and session continuity. EN/ES."
+  "description": "Cortex Edge — a collaborator that remembers you, challenges you, and picks up where you left off. EN/ES."
 }

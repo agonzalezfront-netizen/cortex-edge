@@ -2,10 +2,11 @@
 
 > 🇪🇸 **[Léelo en español → README.es.md](README.es.md)**
 
-**Modular toolkit that turns Claude Code into a refined "second brain" — one optional feature at a time.**
+**A collaborator that remembers you, challenges you, and picks up where you left off.**
 
-Start with memory. Add capabilities as you need them. Every feature is self-contained, explains what it
-does, and declares what it depends on. Nothing is forced; you install only what helps your work.
+Not a note repository, not a reminders assistant: it's what comes out of putting memory, judgment and
+continuity on top of the tool you already use. Start with memory and add capabilities as you need them —
+every feature explains what it does and what it depends on. Nothing is forced.
 
 ---
 
@@ -111,8 +112,8 @@ worth being explicit about that:
 - **Markdown and git** — the boring, durable formats that make all of the above portable.
 
 **What Cortex Edge actually adds:** persistence between sessions, a stance that doesn't just agree
-with you, continuity when you stop and come back, and curation of what to install. It's not a second
-brain on its own — it's what turns a set of very good tools into one that remembers you.
+with you, continuity when you stop and come back, and curation of what to install. Cortex Edge doesn't invent a new tool — it makes the
+one you already use remember you and have judgment of its own.
 
 ---
 
