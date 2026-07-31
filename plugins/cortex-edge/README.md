@@ -117,6 +117,8 @@ Unzip it, open Claude Code inside the folder, and say *"run the install prompt i
 
 ---
 
+> 📋 **[See what changed in each version → CHANGELOG.md](CHANGELOG.md)**
+
 ## Two kinds of skills (don't mix them up)
 
 | | Which ones | Do you install them? |

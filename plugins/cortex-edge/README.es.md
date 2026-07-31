@@ -119,6 +119,8 @@ Descomprime, abre Claude Code dentro de la carpeta y di *"ejecuta el prompt de i
 
 ---
 
+> 📋 **[Ver qué cambió en cada versión → CHANGELOG.md](CHANGELOG.md)**
+
 ## Dos tipos de skills (que no se confundan)
 
 | | Cuáles son | ¿Hay que instalarlas? |
