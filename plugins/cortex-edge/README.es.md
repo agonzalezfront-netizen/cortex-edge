@@ -87,8 +87,14 @@ claude plugin update cortex-edge@cortex-edge
 claude plugin update cortex-edge@cortex-edge --scope project
 ```
 
-Después, dentro de Claude Code, `/reload-plugins` para aplicarlo **sin reiniciar** (el CLI dice
-"restart required", pero `/reload-plugins` basta).
+**Y ahora lo importante: aplicar la versión nueva.** Claude Code carga los plugins **al arrancar la
+sesión**, así que tu conversación abierta sigue con la versión vieja aunque el disco ya tenga la
+nueva. Prueba `/reload-plugins` primero; si `/cortex-edge:setup` te sigue mostrando la versión
+anterior, **cierra y vuelve a abrir Claude Code** — el propio CLI avisa *"restart required"* y en un
+cambio de versión suele tener razón.
+
+Para saber cuál está realmente cargada, pregúntale a tu Claude: *"¿qué versión de cortex-edge tienes
+cargada en esta sesión?"*
 
 **Si usas `/plugin` dentro de Claude Code**, se abre el **explorador de plugins de Claude Code** —
 una lista con cientos de plugins de todo el mundo. **Eso no es Cortex Edge ni nuestro catálogo**:
