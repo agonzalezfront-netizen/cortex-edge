@@ -12,6 +12,12 @@ name a skill again.
 
 ## Cómo trabajar esto / How to work
 
+**Aclara la diferencia antes de mostrar nada.** Mucha gente confunde las dos cosas:
+
+> Ojo, son dos cosas distintas: las **7 skills de Cortex Edge** (`arranca`, `cierra`, `memoria`,
+> `setup`, `skills`, `start`, `close`) ya las tienes — vienen dentro del plugin. Lo que te muestro
+> acá es un **catálogo de skills de terceros**, opcionales, para darle capacidades extra.
+
 **0. Antes de nada, mira qué ya tiene instalado.** Recomendarle instalar algo que ya usa te
 desacredita al instante. Revisa en silencio:
 

@@ -117,6 +117,19 @@ Unzip it, open Claude Code inside the folder, and say *"run the install prompt i
 
 ---
 
+## Two kinds of skills (don't mix them up)
+
+| | Which ones | Do you install them? |
+|---|---|---|
+| 🌱 **Cortex Edge's own** | `arranca` · `cierra` · `memoria` · `setup` · `skills` · `start` · `close` | **No.** They ship inside the plugin. Installing it gives you all of them, and they update with it |
+| 🧰 **From the catalog** | superpowers, document writing, research, design, video… | **Yes, and they're optional.** Written by third parties. `/cortex-edge:skills` helps you pick and install only the ones that fit you |
+
+**Why the difference matters:** the built-in ones *are* Cortex Edge and depend on nothing else. The
+catalog ones are recommendations — some need an external account or MCP server, and each card says
+so before you install anything. If you install none, Cortex Edge works just as well.
+
+---
+
 ## Core (always, not optional)
 
 Every Cortex Edge install ships a **core** that does not depend on any feature:

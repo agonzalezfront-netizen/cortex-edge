@@ -119,6 +119,19 @@ Descomprime, abre Claude Code dentro de la carpeta y di *"ejecuta el prompt de i
 
 ---
 
+## Dos tipos de skills (que no se confundan)
+
+| | Cuáles son | ¿Hay que instalarlas? |
+|---|---|---|
+| 🌱 **Nativas de Cortex Edge** | `arranca` · `cierra` · `memoria` · `setup` · `skills` · `start` · `close` | **No.** Vienen dentro del plugin. Al instalarlo ya las tienes, y se actualizan con él |
+| 🧰 **Del catálogo** | superpowers, redacción de documentos, investigación, diseño, video… | **Sí, y son opcionales.** Están escritas por terceros. `/cortex-edge:skills` te ayuda a elegir e instalar solo las que te sirvan |
+
+**Por qué importa la diferencia:** las nativas son Cortex Edge y no dependen de nada más. Las del
+catálogo son recomendaciones — algunas necesitan una cuenta o un servidor MCP externo, y cada ficha
+lo dice antes de que instales nada. Si no instalas ninguna, Cortex Edge funciona igual de bien.
+
+---
+
 ## Núcleo (siempre, no opcional)
 
 Toda instalación de Cortex Edge trae un **núcleo** que no depende de ninguna feature:
