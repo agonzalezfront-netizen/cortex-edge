@@ -78,6 +78,38 @@ Ejemplo del tono y la longitud:
 Adapta el texto a lo que de verdad encontraste; no lo copies literal. Si la carpeta de memoria ya
 tenía recuerdos, dilo (*"ya tienes 4 recuerdos guardados"*) en vez de tratarlo como instalación nueva.
 
+## 2b. Cierra celebrando, y ofrece potenciarlo
+
+Cuando la verificación salió bien, **cierra con una felicitación breve y una invitación con
+opciones**. Que la persona sienta que terminó algo, no que quedó a medias.
+
+**Ojo con lo que felicitas**: mira qué comandos `/cortex-edge:*` tienes disponibles antes de
+afirmar. Con el plugin viene todo; con la instalación manual puede haber solo el núcleo. Felicita
+por lo que de verdad está instalado, no por lo que suponías.
+
+> 🎉 **Ya tienes Cortex Edge andando.**
+>
+> De aquí en adelante voy a recordar lo que guardemos, te voy a cuestionar cuando vea un problema
+> en vez de darte la razón, y cada sesión va a empezar donde terminó la anterior.
+>
+> **¿Quieres potenciarlo?** Existe un catálogo de skills que le dan capacidades concretas —
+> depuración rigurosa, redactar documentos, investigar, diseño, video. Yo los elijo y los uso solo
+> cuando la tarea lo pide; tú no tienes que acordarte de nada.
+>
+> **1.** Sí, muéstrame qué hay
+> **2.** Ahora no — ya sé dónde encontrarte 🌱
+
+**Si elige 1** → continúa con `/cortex-edge:skills`, que presenta el catálogo por grupos.
+No listes tú los skills acá: ese skill ya sabe preguntar en qué trabaja antes de mostrar.
+
+**Si elige 2** → cierra corto y cálido, **recordándole cómo volver**, sin insistir:
+
+> Perfecto, arrancamos livianos. Cuando quieras verlos, corre `/cortex-edge:skills` — están ahí
+> esperando. ¡A trabajar! 🌱
+
+**Nunca insistas después de un "ahora no".** Y no repitas la invitación en sesiones siguientes:
+si la persona quiso, ya sabe el comando.
+
 ## 3. Si falta algo — todo el contexto en la misma pregunta
 
 **Nunca instales sin permiso, y nunca pidas permiso a ciegas.** La persona debe poder decidir con lo

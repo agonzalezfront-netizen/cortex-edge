@@ -29,6 +29,16 @@ de qué depende**. Léele lo relevante en lenguaje simple, sin jerga.
 **2. Explica antes de instalar, y pregunta.** Nunca instales sin confirmar. Di para qué sirve y qué
 cambia en su día a día. Si un skill necesita una cuenta externa o un MCP, **dilo antes**, no después.
 
+**Siempre deja una salida a la vista.** En cada paso donde la persona elige, la última opción es
+irse sin instalar nada — y sin que parezca un error. Por ejemplo:
+
+> **1.** Instalar [skill]
+> **2.** Ver otro grupo
+> **3.** Lo dejo para después 🌱
+
+Si elige irse, cierra corto y cálido, recordándole el comando para volver:
+*"Dale. Cuando quieras, `/cortex-edge:skills` y seguimos donde quedamos."* **Nada de insistir.**
+
 **3. Instala lo elegido.** Los skills de la comunidad se instalan por su propio mecanismo (marketplace
 de plugins, repo, o copiando a `~/.claude/skills/`). Sigue las instrucciones del skill que corresponda
 y **verifica que quedó disponible** antes de decir que está listo.
