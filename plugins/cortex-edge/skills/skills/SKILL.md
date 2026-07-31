@@ -12,6 +12,17 @@ name a skill again.
 
 ## Cómo trabajar esto / How to work
 
+**0. Antes de nada, mira qué ya tiene instalado.** Recomendarle instalar algo que ya usa te
+desacredita al instante. Revisa en silencio:
+
+- `claude plugin list` — plugins instalados y de qué marketplace vienen
+- `~/.claude/skills/` — sus skills personales
+- `.claude/skills/` del proyecto en el que está, si existe
+
+Con eso: **marca lo que ya tiene como “ya lo tienes ✓” y no lo ofrezcas**. Si ya tiene varios de un
+grupo, tómalo como señal de por dónde va su interés y empieza por ahí. Y si te pide instalar algo
+que ya está, dilo derecho — *"ese ya lo tienes andando"* — en vez de reinstalarlo.
+
 **1. Pregunta primero en qué trabaja.** No listes los cinco grupos de golpe — es ruido. Pregunta a qué
 se dedica o qué le gustaría que su Claude hiciera mejor, y **abre solo el grupo que calza**:
 
