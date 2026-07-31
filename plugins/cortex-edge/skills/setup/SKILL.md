@@ -18,6 +18,29 @@ documentación ni otro comando antes de que pueda decidir o entender. Todo lo qu
 va en el mismo mensaje, en lenguaje simple. Si tiene que irse a otro lado, el mensaje está mal
 escrito.
 
+## 0. Primero: el idioma
+
+**Antes que nada, pregunta en qué idioma quiere que lo guíes.** Es lo primero que ve una persona
+recién instalada, así que va corto y en ambos idiomas a la vez:
+
+> 🌱 **Cortex Edge** — ¿en qué idioma prefieres que te guíe? / Which language should I guide you in?
+>
+> **1.** Español  ·  **2.** English
+
+Desde su respuesta, **todo lo que sigue va en ese idioma**: la verificación, las preguntas, los
+mensajes de error y el cierre. No mezcles.
+
+**Si ya sabes el idioma** porque la persona te viene escribiendo en él, **no preguntes**: úsalo y
+sigue. La pregunta es para el arranque en frío, no para interrogar a alguien que ya te habló.
+
+**Y guarda la elección como recuerdo** (el formato está en `/cortex-edge:memoria`): un archivo
+`prefiere-idioma-<es|en>.md` de tipo `user`, con el índice `MEMORY.md` actualizado. Dos motivos:
+
+1. **Persiste** — en las próximas sesiones el hook lo carga y no hay que volver a preguntar.
+2. **Demuestra el producto en el primer minuto** — cuando llegues al paso 2 puedes decírselo:
+   *"Ya guardé tu primer recuerdo: que prefieres español. En tu próxima sesión lo voy a saber sin
+   preguntarte."* Eso explica para qué sirve todo esto mejor que cualquier párrafo.
+
 ## 1. Verifica, en silencio
 
 Sin narrar cada paso:
@@ -46,9 +69,11 @@ Ejemplo del tono y la longitud:
 > • **Postura crítica** — te voy a cuestionar cuando vea un problema, no a darte la razón siempre
 > • **Continuidad** — `/cortex-edge:cierra` deja un resumen y `/cortex-edge:arranca` lo retoma
 >
-> **Pruébalo ahora:** dime algo que quieras que recuerde siempre — cómo prefieres trabajar, en qué
-> proyecto andas — y lo guardo con `/cortex-edge:memoria`. En tu próxima sesión lo voy a saber sin
-> que me lo repitas. Eso es lo que cambia.
+> **Ya tienes tu primer recuerdo guardado:** que prefieres el español. En tu próxima sesión lo voy a
+> saber sin preguntarte — eso es exactamente lo que hace la memoria.
+>
+> **Pruébalo con algo tuyo:** dime cómo prefieres que trabaje o en qué proyecto andas, y lo guardo
+> con `/cortex-edge:memoria`. La próxima vez arrancamos desde ahí.
 
 Adapta el texto a lo que de verdad encontraste; no lo copies literal. Si la carpeta de memoria ya
 tenía recuerdos, dilo (*"ya tienes 4 recuerdos guardados"*) en vez de tratarlo como instalación nueva.

@@ -46,8 +46,9 @@ Then use it:
 > for new plugins). To confirm they're there, type `/cortex-edge:` and they should show up — or
 > just run `/cortex-edge:setup`.
 
-**Recommended first step:** run `/cortex-edge:setup`. It checks you have what's needed and, if
-something is missing, explains what it's for and asks before installing anything.
+**Recommended first step:** run `/cortex-edge:setup`. It asks which language you'd like to be guided
+in, checks you have what's needed and, if something is missing, explains what it's for and asks
+before installing anything.
 
 **Where your memory lives:** `~/.claude/cortex-memory/` by default — created automatically.
 Prefer it inside your Obsidian vault (or anywhere else)? Set the `CORTEX_MEMORY_PATH`

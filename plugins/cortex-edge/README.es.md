@@ -47,8 +47,9 @@ Después lo usas así:
 > recomendado para plugins nuevos). Para comprobar que están, escribe `/cortex-edge:` y
 > deberías verlos aparecer — o simplemente corre `/cortex-edge:setup`.
 
-**Primer paso recomendado:** ejecuta `/cortex-edge:setup`. Comprueba que tengas lo necesario y,
-si falta algo, te explica para qué sirve y te pregunta antes de instalar nada.
+**Primer paso recomendado:** ejecuta `/cortex-edge:setup`. Te pregunta en qué idioma quieres que te
+guíe, comprueba que tengas lo necesario y, si falta algo, te explica para qué sirve y te pregunta
+antes de instalar nada.
 
 **Dónde vive tu memoria:** en `~/.claude/cortex-memory/` por defecto — se crea sola.
 ¿La prefieres dentro de tu Obsidian (o donde sea)? Define la variable de entorno
