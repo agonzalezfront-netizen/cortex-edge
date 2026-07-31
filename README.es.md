@@ -9,6 +9,56 @@ qué hace y declara de qué depende. Nada se impone; instalas solo lo que te ayu
 
 ---
 
+## Instalación
+
+Hay **dos formas**, y conviene que sepas cuál te sirve antes de empezar:
+
+| | Cómo | Ideal para |
+|---|---|---|
+| ⚡ **Como plugin** *(recomendado)* | Dos comandos dentro de Claude Code | Casi todo el mundo |
+| 📦 **Manual desde este repo** | Bajas un zip y tu Claude lo instala | Si quieres solo una pieza, o prefieres revisar cada archivo antes |
+
+### ⚡ Como plugin
+
+Dentro de Claude Code, ejecuta:
+
+```
+/plugin marketplace add agonzalezfront-netizen/cortex-edge
+/plugin install cortex-edge@cortex-edge
+```
+
+Nada que descargar, ninguna ruta que editar, ningún prompt que explicar. El hook de memoria se
+instala solo y crea su carpeta la primera vez. Y **te llegan las actualizaciones automáticamente**
+cuando publico una versión nueva.
+
+Después lo usas así:
+
+| Comando | Qué hace |
+|---|---|
+| `/cortex-edge:arranca` · `/cortex-edge:start` | Retoma donde quedaste la última sesión |
+| `/cortex-edge:cierra` · `/cortex-edge:close` | Cierra la sesión guardando memoria + handoff |
+| `/cortex-edge:memoria` | Guarda algo en la memoria persistente |
+| `/cortex-edge:skills` | Explora el catálogo e instala los skills que te sirvan |
+
+**Dónde vive tu memoria:** en `~/.claude/cortex-memory/` por defecto — se crea sola.
+¿La prefieres dentro de tu Obsidian (o donde sea)? Define la variable de entorno
+`CORTEX_MEMORY_PATH` con esa ruta y el hook la usará en su lugar.
+
+<details>
+<summary>📦 Manual desde este repo — desplegar</summary>
+
+¿Prefieres instalarlo a mano, o quieres solo una pieza? Baja un zip y deja que tu Claude lo instale:
+
+1. **Solo el núcleo** → [`dist/cortex-edge-core.zip`](dist/cortex-edge-core.zip) — memoria + postura crítica.
+2. **Una feature suelta** → [`dist/cortex-start-close.zip`](dist/cortex-start-close.zip),
+   [`dist/cortex-skills.zip`](dist/cortex-skills.zip) — cada una **requiere el núcleo**.
+3. **Completo** → [`dist/cortex-edge-full.zip`](dist/cortex-edge-full.zip).
+
+Descomprime, abre Claude Code dentro de la carpeta y di *"ejecuta el prompt de instalación"*.
+</details>
+
+---
+
 ## Núcleo (siempre, no opcional)
 
 Toda instalación de Cortex Edge trae un **núcleo** que no depende de ninguna feature:
@@ -25,44 +75,6 @@ Toda instalación de Cortex Edge trae un **núcleo** que no depende de ninguna f
 |---|---|---|---|
 | `cortex-start-close` | `/arranca` y `/cierra` — retoma donde quedaste, y cierra dejando un handoff | núcleo (memoria) | ✅ lista |
 | `cortex-skills` | descubrir e instalar skills desde un catálogo curado | núcleo | ✅ lista |
-
-## Instalación — dos comandos ⚡
-
-Dentro de Claude Code, ejecuta:
-
-```
-/plugin marketplace add agonzalezfront-netizen/cortex-edge
-/plugin install cortex-edge@cortex-edge
-```
-
-Listo. Nada que descargar, nada que descomprimir, ninguna ruta que editar, ningún prompt que
-explicar. El hook de memoria se instala solo y crea su carpeta la primera vez.
-
-Después lo usas así:
-
-| Comando | Qué hace |
-|---|---|
-| `/cortex-edge:arranca` · `/cortex-edge:start` | Retoma donde quedaste la última sesión |
-| `/cortex-edge:cierra` · `/cortex-edge:close` | Cierra la sesión guardando memoria + handoff |
-| `/cortex-edge:memoria` | Guarda algo en la memoria persistente |
-| `/cortex-edge:skills` | Explora el catálogo e instala los skills que te sirvan |
-
-**Dónde vive tu memoria:** en `~/.claude/cortex-memory/` por defecto — se crea sola.
-¿La prefieres dentro de tu Obsidian (o donde sea)? Define la variable de entorno
-`CORTEX_MEMORY_PATH` con esa ruta y el hook la usará en su lugar.
-
-<details>
-<summary>Instalación manual (sin sistema de plugins)</summary>
-
-¿Prefieres instalarlo a mano, o quieres solo una pieza? Baja un zip y deja que tu Claude lo instale:
-
-1. **Solo el núcleo** → [`dist/cortex-edge-core.zip`](dist/cortex-edge-core.zip) — memoria + postura crítica.
-2. **Una feature suelta** → [`dist/cortex-start-close.zip`](dist/cortex-start-close.zip),
-   [`dist/cortex-skills.zip`](dist/cortex-skills.zip) — cada una **requiere el núcleo**.
-3. **Completo** → [`dist/cortex-edge-full.zip`](dist/cortex-edge-full.zip).
-
-Descomprime, abre Claude Code dentro de la carpeta y di *"ejecuta el prompt de instalación"*.
-</details>
 
 ---
 

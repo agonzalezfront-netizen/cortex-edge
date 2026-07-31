@@ -9,6 +9,55 @@ does, and declares what it depends on. Nothing is forced; you install only what 
 
 ---
 
+## Install
+
+There are **two ways**, and it's worth knowing which one fits you before you start:
+
+| | How | Best for |
+|---|---|---|
+| ⚡ **As a plugin** *(recommended)* | Two commands inside Claude Code | Almost everyone |
+| 📦 **Manually from this repo** | Download a zip and your Claude installs it | If you want just one piece, or prefer to review every file first |
+
+### ⚡ As a plugin
+
+Inside Claude Code, run:
+
+```
+/plugin marketplace add agonzalezfront-netizen/cortex-edge
+/plugin install cortex-edge@cortex-edge
+```
+
+Nothing to download, no paths to edit, no prompt to explain. The memory hook installs itself and
+creates its folder on first run. And **updates reach you automatically** when a new version ships.
+
+Then use it:
+
+| Command | What it does |
+|---|---|
+| `/cortex-edge:start` · `/cortex-edge:arranca` | Pick up where you left off last session |
+| `/cortex-edge:close` · `/cortex-edge:cierra` | Close the session saving memory + a handoff |
+| `/cortex-edge:memoria` | Save something to persistent memory |
+| `/cortex-edge:skills` | Browse the catalog and install the skills that fit your work |
+
+**Where your memory lives:** `~/.claude/cortex-memory/` by default — created automatically.
+Prefer it inside your Obsidian vault (or anywhere else)? Set the `CORTEX_MEMORY_PATH`
+environment variable to that path and the hook will use it instead.
+
+<details>
+<summary>📦 Manually from this repo — expand</summary>
+
+Prefer to install by hand, or want just one piece? Download a zip and let your Claude install it:
+
+1. **Core only** → [`dist/cortex-edge-core.zip`](dist/cortex-edge-core.zip) — memory + critical stance.
+2. **A single feature** → [`dist/cortex-start-close.zip`](dist/cortex-start-close.zip),
+   [`dist/cortex-skills.zip`](dist/cortex-skills.zip) — each **requires the core**.
+3. **Full** → [`dist/cortex-edge-full.zip`](dist/cortex-edge-full.zip).
+
+Unzip it, open Claude Code inside the folder, and say *"run the install prompt inside"*.
+</details>
+
+---
+
 ## Core (always, not optional)
 
 Every Cortex Edge install ships a **core** that does not depend on any feature:
@@ -25,44 +74,6 @@ Every Cortex Edge install ships a **core** that does not depend on any feature:
 |---|---|---|---|
 | `cortex-start-close` | `/start` and `/close` — pick up where you left off, and close leaving a handoff | core (memory) | ✅ ready |
 | `cortex-skills` | discover and install skills from a curated catalog | core | ✅ ready |
-
-## Install — two commands ⚡
-
-Inside Claude Code, run:
-
-```
-/plugin marketplace add agonzalezfront-netizen/cortex-edge
-/plugin install cortex-edge@cortex-edge
-```
-
-That's it. Nothing to download, nothing to unzip, no paths to edit, no prompt to explain.
-The memory hook installs itself and creates its folder on first run.
-
-Then use it:
-
-| Command | What it does |
-|---|---|
-| `/cortex-edge:start` · `/cortex-edge:arranca` | Pick up where you left off last session |
-| `/cortex-edge:close` · `/cortex-edge:cierra` | Close the session saving memory + a handoff |
-| `/cortex-edge:memoria` | Save something to persistent memory |
-| `/cortex-edge:skills` | Browse the catalog and install the skills that fit your work |
-
-**Where your memory lives:** `~/.claude/cortex-memory/` by default — created automatically.
-Prefer it inside your Obsidian vault (or anywhere else)? Set the `CORTEX_MEMORY_PATH`
-environment variable to that path and the hook will use it instead.
-
-<details>
-<summary>Manual install (no plugin system)</summary>
-
-Prefer to install by hand, or want just one piece? Download a zip and let your Claude install it:
-
-1. **Core only** → [`dist/cortex-edge-core.zip`](dist/cortex-edge-core.zip) — memory + critical stance.
-2. **A single feature** → [`dist/cortex-start-close.zip`](dist/cortex-start-close.zip),
-   [`dist/cortex-skills.zip`](dist/cortex-skills.zip) — each **requires the core**.
-3. **Full** → [`dist/cortex-edge-full.zip`](dist/cortex-edge-full.zip).
-
-Unzip it, open Claude Code inside the folder, and say *"run the install prompt inside"*.
-</details>
 
 ---
 
