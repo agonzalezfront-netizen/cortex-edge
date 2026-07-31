@@ -32,13 +32,13 @@ que ya está, dilo derecho — *"ese ya lo tienes andando"* — en vez de reinst
 **1. Pregunta primero en qué trabaja.** No listes los cinco grupos de golpe — es ruido. Pregunta a qué
 se dedica o qué le gustaría que su Claude hiciera mejor, y **abre solo el grupo que calza**:
 
-| Si la persona… | Abre (uso interno) |
-|---|---|
-| programa, construye software, arregla bugs | `catalog/01-producto-dev.md` |
-| escribe informes, propuestas, presentaciones, planillas | `catalog/02-documentos.md` |
-| investiga, analiza datos | `catalog/03-investigacion-datos.md` |
-| hace diseño, video, imágenes, o quiere crear sus propios skills | `catalog/04-multimedia-meta.md` |
-| quiere conectar Notion, Slack, Drive… | `catalog/05-conectores.md` |
+| Si la persona… | Qué hay ahí (esto sí se lo dices) | Abre (interno) |
+|---|---|---|
+| programa, construye software, arregla bugs | **superpowers** · **frontend-design** · **ui-ux-pro-max** | `catalog/01-producto-dev.md` |
+| escribe informes, propuestas, presentaciones, planillas | **docx** · **pdf** · **pptx** · **xlsx** | `catalog/02-documentos.md` |
+| investiga o analiza datos | **deep-research** · **dataviz** | `catalog/03-investigacion-datos.md` |
+| hace video, o quiere crear y ordenar sus propios skills | **remotion** · **skill-creator** · **consolidate-memory** | `catalog/04-multimedia-meta.md` |
+| quiere conectar sus herramientas | **Google Workspace** (Gmail, Drive, Calendar) · **Figma** · **Notion, HubSpot, Slack, Salesforce** | `catalog/05-conectores.md` |
 
 🚫 **Esos nombres de archivo son internos: la persona NUNCA debe verlos.** Son índices que tú lees
 para saber qué recomendar. Lo que le muestras a ella son **los skills que hay adentro**, con su
