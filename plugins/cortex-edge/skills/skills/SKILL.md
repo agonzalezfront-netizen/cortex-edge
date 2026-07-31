@@ -65,7 +65,43 @@ Si elige irse, cierra corto y cálido, recordándole el comando para volver:
 de plugins, repo, o copiando a `~/.claude/skills/`). Sigue las instrucciones del skill que corresponda
 y **verifica que quedó disponible** antes de decir que está listo.
 
-**4. Activa la capa de comportamiento — este es el paso que hace la diferencia.**
+**5. Prueba de manejo — solo la primera vez que instala skills.**
+
+Instalar algo y no usarlo nunca es lo más probable que pase. Así que ofrécele probarlo **ahí mismo**:
+
+> ✅ Listo, quedó instalado. **¿Lo probamos ahora?** Es la mejor forma de que veas para qué sirve.
+>
+> **1.** Sí, hagamos un recorrido por lo que instalé
+> **2.** Prefiero probar uno en particular
+> **3.** Después — vamos al trabajo 🌱
+
+**Si elige 1 o 2**, para cada skill que pruebe:
+
+**a) Plantéale un caso concreto, no una explicación.** Inventa un ejemplo realista **usando lo que
+sabes de esa persona** (su proyecto, su lenguaje, su rubro). Nada genérico:
+
+> Probemos **superpowers** con algo tuyo. Dime un bug que tengas dando vueltas, o si prefieres
+> invento uno del proyecto en el que estás y lo depuramos juntos paso a paso. Vas a ver que en vez
+> de tirarte una respuesta, primero reproduce el problema y busca la causa.
+
+**b) Hazlo de verdad.** No describas lo que haría el skill: **úsalo** con el caso. La persona tiene
+que ver el resultado, no que se lo cuenten.
+
+**c) Al terminar, ofrece seguir o parar:**
+
+> **1.** Probemos otro  ·  **2.** Suficiente, vamos al trabajo 🌱
+
+**d) Y cierra siempre con lo más importante — que no necesita comandos:**
+
+> Un detalle que te ahorra tiempo: **no tienes que llamar a los skills.** No escribas comandos ni
+> te acuerdes de sus nombres. Solo dime lo que necesitas — *"tengo un bug raro"*, *"arma un informe
+> en Word"* — y yo tomo el que corresponda por mi cuenta. Si alguna vez quieres volver a probarlos,
+> me lo pides y listo.
+
+**Si elige 3**, cierra corto y dile lo mismo en una línea: que no hace falta llamarlos, que los usas
+solo, y que puede pedir la prueba cuando quiera. **Nunca insistas.**
+
+**6. Activa la capa de comportamiento — este es el paso que hace la diferencia.**
 Lee `COMPORTAMIENTO.md` (está junto a este archivo) y **agrega su contenido al `CLAUDE.md` del
 usuario** si aún no está. Eso es lo que hace que Claude tome los skills por su cuenta, en vez de
 esperar a que se los nombren. Confírmale en una línea que quedó activo.

@@ -9,6 +9,12 @@ Those findings are marked 👤.
 
 ---
 
+## 1.15.0
+- **Prueba de manejo al instalar skills.** La primera vez que instalas algo del catálogo, se te
+  ofrece probarlo ahí mismo con **un caso concreto de lo tuyo** — no una explicación. Puedes hacer
+  un recorrido por todos o probar uno solo, y al final se cierra con lo que más ahorra tiempo:
+  **no hace falta llamar a los skills con comandos**, basta con decir lo que necesitas.
+
 ## 1.14.0
 - **Nuevo `/cortex-edge:obsidian`** — conecta tu carpeta de memoria con Obsidian para verla como
   notas: buscar, enlazar, ver el mapa, leerla desde el teléfono. Si no lo tienes, se ofrece a
