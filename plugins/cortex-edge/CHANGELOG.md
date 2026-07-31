@@ -9,6 +9,12 @@ Those findings are marked 👤.
 
 ---
 
+## 1.13.0
+- 👤 **El recorrido ya no se decide por cuánta memoria tienes.** Antes se usaba "tiene pocos
+  recuerdos" como señal de "es nuevo", y alguien que llevaba semanas usándolo sin que nadie le
+  explicara los comandos nunca lo veía. Ahora se guarda un marcador: si nunca se te presentó, se
+  te ofrece — y si ya lo viste, no se repite nunca más.
+
 ## 1.12.1
 - 👤 El CHANGELOG se quedaba atrás respecto a la versión publicada. Ahora `publicar.py` **no deja
   publicar** si la versión del manifiesto no está documentada acá.

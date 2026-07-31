@@ -11,17 +11,34 @@ You are starting a work session. Help the user pick up without re-reading everyt
    - **Where we left off:** the current state from the last session.
    - **Pending:** what's left, with context.
    - **Suggested next step:** where to continue today.
-4. **PRIMERA VEZ — visita guiada.** Si no hay `HANDOFF.md` **y** la memoria tiene pocos recuerdos
-   (solo el del idioma, o ninguno), esta persona acaba de instalar Cortex Edge. **No le preguntes
-   "¿en qué trabajamos?" y ya** — todavía no sabe qué tiene entre manos. Hazle el recorrido:
+4. **¿Ya le mostraste qué puede hacer?** La señal NO es cuánta memoria tiene — alguien puede llevar
+   semanas guardando cosas sin que nadie le haya explicado nunca los comandos. La señal es un
+   recuerdo marcador: busca en la carpeta de memoria un archivo `cortex-edge-recorrido.md`.
 
-   **a) Demuestra primero, explica después.** Abre confirmando que la memoria funcionó:
+   **Si NO existe** → todavía no vio el recorrido. Dos casos:
 
-   > 🌱 **Bienvenido de vuelta.** Antes de nada, fíjate en esto: **recordé que prefieres el
-   > español** sin que me lo dijeras. Eso es la memoria, y ya está andando.
+   - **Memoria vacía o casi** (recién instaló): hazle el recorrido completo del punto 5, sin preguntar.
+   - **Ya tiene recuerdos** (venía usándolo sin que nadie le explicara): **ofrécelo, no lo impongas**.
 
-   **b) Muéstrale lo que tiene, con ejemplos reales y diciendo cuándo lo usaría.** Cuatro como
-   máximo, en lenguaje simple:
+     > Por cierto, veo que ya vienes usándome pero creo que nunca te mostré todo lo que puedes
+     > hacer. ¿Te lo cuento en 30 segundos?
+     >
+     > **1.** Dale  ·  **2.** Ahora no, vamos al trabajo
+
+   **En cuanto termines el recorrido** (o si dice que no), **guarda el marcador**: un archivo
+   `cortex-edge-recorrido.md` de tipo `reference` diciendo que ya se le presentó, con la fecha.
+   Así no se lo repites nunca más. Formato en `/cortex-edge:memoria`.
+
+   **Si el marcador existe** → salta al punto 6. No repitas la presentación.
+
+5. **El recorrido.**
+
+   **a) Demuestra primero, explica después.** Si hay algún recuerdo suyo, úsalo como prueba viva:
+
+   > 🌱 **Bienvenido de vuelta.** Fíjate: **recordé que prefieres el español** sin que me lo
+   > dijeras. Eso es la memoria, y ya está andando.
+
+   **b) Muéstrale lo que tiene, con ejemplos reales y cuándo lo usaría.** Cuatro como máximo:
 
    > **Lo que puedes hacer desde ahora:**
    >
@@ -33,20 +50,18 @@ You are starting a work session. Help the user pick up without re-reading everyt
    >   por defecto. No tienes que pedirlo.
    > • **Revisar que todo esté bien** — `/cortex-edge:setup`, por si algún día algo falla.
 
-   **c) Recién ahora, el catálogo.** Ya entendió lo que tiene; ahora sí tiene sentido ofrecer más:
+   **c) Recién ahora, el catálogo.**
 
    > **¿Le sumamos capacidades?** Hay un catálogo de skills — depuración rigurosa, redactar
    > documentos, investigación, diseño, video. Los uso solo cuando la tarea lo pide.
    >
-   > **1.** Muéstrame el catálogo
-   > **2.** Después — empecemos a trabajar 🌱
+   > **1.** Muéstrame el catálogo  ·  **2.** Después — empecemos a trabajar 🌱
 
-   Si elige **2**, cierra preguntándole en qué quiere trabajar hoy. Si elige **1**, sigue con
+   Si elige **2**, pregúntale en qué quiere trabajar. Si elige **1**, sigue con
    `/cortex-edge:skills`. **Nunca insistas.**
 
-5. **Si no hay `HANDOFF.md` pero la memoria ya tiene historia** (no es primera vez, simplemente
-   nunca cerró con `/cortex-edge:close`): dilo en una línea, recuérdale que `cierra` deja el
-   resumen para la próxima, y pregúntale en qué trabaja hoy. Sin recorrido — ya lo conoce.
+6. **Si no hay `HANDOFF.md`** pero ya conoce el producto: dilo en una línea, recuérdale que
+   `/cortex-edge:close` deja el resumen para la próxima, y pregúntale en qué trabaja hoy.
 
 Don't invent state: if the handoff doesn't mention something, don't assume it. Memory (`MEMORY.md`) already
 loaded at startup — this command adds the "where we left off" from the last close. (Español: `/arranca`.)
