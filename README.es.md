@@ -66,6 +66,43 @@ Descomprime, abre Claude Code dentro de la carpeta y di *"ejecuta el prompt de i
 
 ---
 
+## Requisitos
+
+Declarados por adelantado, porque este proyecto le exige a cada feature que declare sus dependencias
+— el proyecto mismo te debe lo mismo:
+
+| Necesita | Para qué | Si no lo tienes |
+|---|---|---|
+| **Claude Code** | Cortex Edge es una extensión suya, no una app aparte | No funciona nada |
+| **Python 3** en tu PATH | El hook de memoria es un script de Python | La memoria no carga y no te avisa — el resto sigue funcionando |
+| **git** | Es como el marketplace baja y actualiza el plugin | Usa la instalación manual por zip |
+
+Tu memoria son archivos Markdown en una carpeta. Nada queda encerrado en una base de datos ni en un
+formato propietario — puedes leerlos, editarlos, respaldarlos o irte con ellos cuando quieras.
+
+## Se apoya en el trabajo de otros
+
+Cortex Edge es una capa delgada. Casi todo lo que lo hace útil lo construyó otra gente, y corresponde
+decirlo claro:
+
+- **[Claude Code](https://code.claude.com) y su sistema de plugins, skills y hooks** (Anthropic) — toda
+  la base. Cortex Edge solo ordena piezas que Claude Code ya ofrece.
+- **Skills de la comunidad** — el catálogo de `/cortex-edge:skills` recomienda en su mayoría **skills
+  escritos por otras personas**. No los hicimos nosotros; te ayudamos a encontrar e instalar los que
+  calzan con tu trabajo.
+- **El ecosistema MCP** — cada skill de conectores (Notion, Slack, Drive…) depende de un servidor MCP
+  que mantiene alguien más.
+- **[Obsidian](https://obsidian.md)** — opcional, pero le calza natural: apunta `CORTEX_MEMORY_PATH` a
+  una carpeta de tu vault y tu memoria pasa a ser notas que puedes navegar, enlazar y buscar como
+  cualquier otra.
+- **Markdown y git** — los formatos aburridos y duraderos que hacen que todo lo anterior sea portable.
+
+**Lo que Cortex Edge sí aporta:** persistencia entre sesiones, una postura que no te da la razón por
+defecto, continuidad cuando paras y vuelves, y criterio sobre qué instalar. No es un segundo cerebro
+por sí solo — es lo que convierte un conjunto de muy buenas herramientas en una que se acuerda de ti.
+
+---
+
 ## Modelo de features
 
 Cada feature es una carpeta dentro de `features/` con la misma forma:

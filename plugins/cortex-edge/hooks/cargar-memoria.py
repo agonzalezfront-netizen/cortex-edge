@@ -9,6 +9,9 @@ la primera vez, con un MEMORY.md semilla. Si prefieres guardar la memoria en tu
 Obsidian (o donde quieras), define la variable de entorno CORTEX_MEMORY_PATH con esa
 ruta y el hook la usará en su lugar.
 
+REQUIERE Python 3 en el PATH (este archivo es un script de Python). Si no lo tienes,
+la memoria no se carga — el resto del plugin sigue funcionando igual.
+
 Es fail-silent: si algo falla, NO rompe la sesión (simplemente no carga memoria).
 """
 from __future__ import annotations

@@ -66,6 +66,41 @@ Unzip it, open Claude Code inside the folder, and say *"run the install prompt i
 
 ---
 
+## Requirements
+
+Stated up front, because this project asks every feature to declare its dependencies — the project
+itself owes you the same:
+
+| Needs | Why | Without it |
+|---|---|---|
+| **Claude Code** | Cortex Edge is an extension of it, not a separate app | Nothing works |
+| **Python 3** on your PATH | The memory hook is a Python script | Memory silently won't load — the rest still works |
+| **git** | How the plugin marketplace fetches and updates | Use the manual zip install instead |
+
+Your memory is plain Markdown files in a folder. Nothing is locked in a database or a proprietary
+format — you can read, edit, back up or walk away with them at any time.
+
+## Built on other people's work
+
+Cortex Edge is a thin layer. Almost everything that makes it useful was built by others, and it's
+worth being explicit about that:
+
+- **[Claude Code](https://code.claude.com) and its plugin, skill and hook system** (Anthropic) — the
+  entire foundation. Cortex Edge only arranges pieces that Claude Code already provides.
+- **Community skills** — the catalog in `/cortex-edge:skills` mostly recommends **skills written by
+  other people**. We didn't build them; we help you find and install the ones that fit your work.
+- **The MCP ecosystem** — every connector skill (Notion, Slack, Drive…) depends on an MCP server
+  maintained by someone else.
+- **[Obsidian](https://obsidian.md)** — optional, but a natural home: point `CORTEX_MEMORY_PATH` at a
+  folder in your vault and your memory becomes notes you can browse, link and search like any other.
+- **Markdown and git** — the boring, durable formats that make all of the above portable.
+
+**What Cortex Edge actually adds:** persistence between sessions, a stance that doesn't just agree
+with you, continuity when you stop and come back, and curation of what to install. It's not a second
+brain on its own — it's what turns a set of very good tools into one that remembers you.
+
+---
+
 ## Feature model
 
 Each feature is a folder under `features/` with the same shape:
