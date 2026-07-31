@@ -32,16 +32,21 @@ que ya está, dilo derecho — *"ese ya lo tienes andando"* — en vez de reinst
 **1. Pregunta primero en qué trabaja.** No listes los cinco grupos de golpe — es ruido. Pregunta a qué
 se dedica o qué le gustaría que su Claude hiciera mejor, y **abre solo el grupo que calza**:
 
-| Archivo | Grupo | Para quién |
-|---|---|---|
-| `catalog/01-producto-dev.md` | Producto / Dev | programa, construye software, arregla bugs |
-| `catalog/02-documentos.md` | Documentos | escribe informes, propuestas, presentaciones, planillas |
-| `catalog/03-investigacion-datos.md` | Investigación / Datos | investiga, analiza datos, hace research |
-| `catalog/04-multimedia-meta.md` | Multimedia / Meta | diseño, video, imágenes, crear sus propios skills |
-| `catalog/05-conectores.md` | Conectores | quiere conectar Notion, Slack, Drive, etc. |
+| Si la persona… | Abre (uso interno) |
+|---|---|
+| programa, construye software, arregla bugs | `catalog/01-producto-dev.md` |
+| escribe informes, propuestas, presentaciones, planillas | `catalog/02-documentos.md` |
+| investiga, analiza datos | `catalog/03-investigacion-datos.md` |
+| hace diseño, video, imágenes, o quiere crear sus propios skills | `catalog/04-multimedia-meta.md` |
+| quiere conectar Notion, Slack, Drive… | `catalog/05-conectores.md` |
+
+🚫 **Esos nombres de archivo son internos: la persona NUNCA debe verlos.** Son índices que tú lees
+para saber qué recomendar. Lo que le muestras a ella son **los skills que hay adentro**, con su
+nombre real (superpowers, docx, pdf…) y en lenguaje simple. Mostrarle `01-producto-dev.md` es como
+darle el número de estante en vez del libro.
 
 Cada ficha del catálogo dice: **qué es · para qué es bueno · cuándo Cortex lo toma solo · cuándo NO ·
-de qué depende**. Léele lo relevante en lenguaje simple, sin jerga.
+de qué depende**. Traduce eso a lenguaje simple, sin jerga.
 
 **2. Explica antes de instalar, y pregunta.** Nunca instales sin confirmar. Di para qué sirve y qué
 cambia en su día a día. Si un skill necesita una cuenta externa o un MCP, **dilo antes**, no después.
