@@ -1,49 +1,66 @@
 ---
-description: Check that Cortex Edge has everything it needs, explain what got activated, and offer to install what's missing. Use right after installing the plugin, when memory doesn't seem to load, or when the user asks "does this work?", "revisa la instalación", "check my setup", "por qué no recuerda nada".
+description: 'Guided setup for Cortex Edge — walks the person step by step: language, requirements check, installing what''s missing, and what to do next. Use right after installing the plugin, when memory doesn''t seem to load, or when the user asks "does this work?", "revisa la instalación", "check my setup", "por qué no recuerda nada".'
 ---
 
-# Setup — verificar, explicar y dejar andando / check, explain, get going
+# Setup — instalación guiada / guided setup
 
-Comprueba que Cortex Edge pueda funcionar, **explica qué queda activo** y **dice qué sigue**.
-Check that Cortex Edge can work, **explain what's now active**, and **say what comes next**.
+Lleva a la persona **de la mano** por la puesta en marcha. Nunca debe preguntarse dónde está ni
+qué viene después.
+Walk the person **by the hand** through setup. They should never wonder where they are or what
+comes next.
 
 > **Por qué existe:** el hook de memoria es un script de Python. Si el usuario no tiene Python, el
 > hook no corre — **y por lo tanto tampoco puede avisar que falta Python**. Sin esta verificación,
 > la persona instala, ve los comandos funcionar, y la memoria nunca carga sin explicación.
 
-## Principio de UX que manda en todo este skill
+---
 
-**El contexto va donde está la decisión.** Nunca mandes a la persona a leer el README, la
-documentación ni otro comando antes de que pueda decidir o entender. Todo lo que necesita saber
-va en el mismo mensaje, en lenguaje simple. Si tiene que irse a otro lado, el mensaje está mal
-escrito.
+## Las dos reglas que mandan en todo este skill
 
-## 0. Primero: el idioma
+**1. Ubicación y rumbo, siempre.** Cada mensaje que le envíes abre diciendo **en qué paso está** y
+cierra diciendo **qué sigue**. Sin eso, la persona queda a ciegas y abandona.
 
-**Antes que nada, pregunta en qué idioma quiere que lo guíes.** Es lo primero que ve una persona
-recién instalada, así que va corto y en ambos idiomas a la vez:
+```
+🌱 Cortex Edge · Paso 2 de 4 — Requisitos
+   [ ... el contenido del paso ... ]
+   → Sigue: dejar tu memoria activa
+```
 
-> 🌱 **Cortex Edge** — ¿en qué idioma prefieres que te guíe? / Which language should I guide you in?
+**2. El contexto va donde está la decisión.** Nunca la mandes a leer el README, la documentación ni
+otro comando antes de que pueda decidir o entender. Todo lo necesario va en el mismo mensaje, en
+lenguaje simple. Si tiene que irse a otro lado, el mensaje está mal escrito.
+
+**El recorrido completo es de 4 pasos.** Anúncialo al empezar para que sepa cuánto falta:
+`1 Idioma · 2 Requisitos · 3 Listo · 4 Potenciarlo`. Si hay que instalar algo, ese trabajo va
+**dentro** del paso 2 — no cambies la numeración a mitad de camino.
+
+---
+
+## Paso 1 de 4 — Idioma
+
+Lo primero, corto y en ambos idiomas:
+
+> 🌱 **Cortex Edge · Paso 1 de 4 — Idioma**
+> *(el recorrido completo: idioma → requisitos → listo → potenciarlo)*
+>
+> ¿En qué idioma prefieres que te guíe? / Which language should I guide you in?
 >
 > **1.** Español  ·  **2.** English
+>
+> → Sigue: reviso que tengas todo lo necesario
 
-Desde su respuesta, **todo lo que sigue va en ese idioma**: la verificación, las preguntas, los
-mensajes de error y el cierre. No mezcles.
+Desde su respuesta, **todo va en ese idioma**: verificaciones, preguntas, errores y cierre.
 
-**Si ya sabes el idioma** porque la persona te viene escribiendo en él, **no preguntes**: úsalo y
-sigue. La pregunta es para el arranque en frío, no para interrogar a alguien que ya te habló.
+**Si ya sabes el idioma** porque viene escribiéndote en él, **no preguntes**: úsalo, dilo en media
+línea (*"sigo en español"*) y pasa al paso 2. La pregunta es para el arranque en frío.
 
-**Y guarda la elección como recuerdo** (el formato está en `/cortex-edge:memoria`): un archivo
-`prefiere-idioma-<es|en>.md` de tipo `user`, con el índice `MEMORY.md` actualizado. Dos motivos:
+**Guarda la elección como recuerdo** (formato en `/cortex-edge:memoria`): archivo
+`prefiere-idioma-<es|en>.md`, tipo `user`, con `MEMORY.md` actualizado. Persiste **y** te sirve para
+demostrar el producto en el paso 3.
 
-1. **Persiste** — en las próximas sesiones el hook lo carga y no hay que volver a preguntar.
-2. **Demuestra el producto en el primer minuto** — cuando llegues al paso 2 puedes decírselo:
-   *"Ya guardé tu primer recuerdo: que prefieres español. En tu próxima sesión lo voy a saber sin
-   preguntarte."* Eso explica para qué sirve todo esto mejor que cualquier párrafo.
+## Paso 2 de 4 — Requisitos
 
-## 1. Verifica, en silencio
-
-Sin narrar cada paso:
+Verifica sin narrar cada comando:
 
 | Qué | Cómo | Para qué sirve |
 |---|---|---|
@@ -51,76 +68,70 @@ Sin narrar cada paso:
 | **git** | `git --version` | Que el plugin se actualice solo cuando salga una versión nueva |
 | **Carpeta de memoria** | ¿existe `$CORTEX_MEMORY_PATH` o `~/.claude/cortex-memory/`? | Donde viven tus recuerdos |
 
-## 2. Si está todo — confirma, explica y orienta
+**Si está todo** → dilo en una línea con las versiones, anuncia qué sigue, y pasa al paso 3.
 
-**No basta con decir "todo listo".** La persona acaba de instalar algo y necesita saber qué cambió
-y qué hacer ahora. Tres bloques cortos, sin relleno:
+**Si falta algo** → resuélvelo aquí, sin cambiar de paso. Ver más abajo.
 
-1. **Qué encontraste** — una línea con las versiones.
-2. **Qué queda activo** — en lenguaje simple, no técnico. Que entienda qué gana.
-3. **Qué sigue** — **una** acción concreta para probarlo ahora mismo.
+## Paso 3 de 4 — Listo: qué queda activo
 
-Ejemplo del tono y la longitud:
+**No basta con "todo listo".** La persona acaba de instalar algo: necesita saber qué cambió y qué
+puede hacer con eso. Ejemplo de tono y largo:
 
-> ✅ **Listo.** Tienes Python 3.13 y git 2.55, así que todo funciona.
+> 🌱 **Cortex Edge · Paso 3 de 4 — Listo**
+>
+> ✅ Tienes Python 3.13 y git 2.55. Todo funciona.
 >
 > **Qué queda activo desde ahora:**
-> • **Memoria** — lo que guardes se carga solo al empezar cada sesión, en `~/.claude/cortex-memory/`
+> • **Memoria** — lo que guardemos se carga solo al empezar cada sesión, en `~/.claude/cortex-memory/`
 > • **Postura crítica** — te voy a cuestionar cuando vea un problema, no a darte la razón siempre
 > • **Continuidad** — `/cortex-edge:cierra` deja un resumen y `/cortex-edge:arranca` lo retoma
 >
 > **Ya tienes tu primer recuerdo guardado:** que prefieres el español. En tu próxima sesión lo voy a
 > saber sin preguntarte — eso es exactamente lo que hace la memoria.
 >
-> **Pruébalo con algo tuyo:** dime cómo prefieres que trabaje o en qué proyecto andas, y lo guardo
-> con `/cortex-edge:memoria`. La próxima vez arrancamos desde ahí.
+> → Sigue: te muestro cómo potenciarlo (último paso)
 
-Adapta el texto a lo que de verdad encontraste; no lo copies literal. Si la carpeta de memoria ya
-tenía recuerdos, dilo (*"ya tienes 4 recuerdos guardados"*) en vez de tratarlo como instalación nueva.
+Adapta a lo que de verdad encontraste. Si la carpeta ya tenía recuerdos, dilo (*"ya tienes 4
+recuerdos guardados"*) en vez de tratarlo como instalación nueva.
 
-## 2b. Cierra celebrando, y ofrece potenciarlo
+## Paso 4 de 4 — Potenciarlo (y cierre)
 
-Cuando la verificación salió bien, **cierra con una felicitación breve y una invitación con
-opciones**. Que la persona sienta que terminó algo, no que quedó a medias.
+Felicita, ofrece el catálogo, y **deja siempre la salida a la vista**:
 
-**Ojo con lo que felicitas**: mira qué comandos `/cortex-edge:*` tienes disponibles antes de
-afirmar. Con el plugin viene todo; con la instalación manual puede haber solo el núcleo. Felicita
-por lo que de verdad está instalado, no por lo que suponías.
-
-> 🎉 **Ya tienes Cortex Edge andando.**
+> 🌱 **Cortex Edge · Paso 4 de 4 — Potenciarlo**
 >
-> De aquí en adelante voy a recordar lo que guardemos, te voy a cuestionar cuando vea un problema
-> en vez de darte la razón, y cada sesión va a empezar donde terminó la anterior.
+> 🎉 **Ya está, terminaste.** De aquí en adelante voy a recordar lo que guardemos, te voy a
+> cuestionar cuando vea un problema, y cada sesión va a empezar donde terminó la anterior.
 >
-> **¿Quieres potenciarlo?** Existe un catálogo de skills que le dan capacidades concretas —
-> depuración rigurosa, redactar documentos, investigar, diseño, video. Yo los elijo y los uso solo
+> **¿Quieres potenciarlo?** Hay un catálogo de skills que le dan capacidades concretas —
+> depuración rigurosa, redactar documentos, investigar, diseño, video. Yo los elijo y los uso
 > cuando la tarea lo pide; tú no tienes que acordarte de nada.
 >
 > **1.** Sí, muéstrame qué hay
 > **2.** Ahora no — ya sé dónde encontrarte 🌱
 
-**Si elige 1** → continúa con `/cortex-edge:skills`, que presenta el catálogo por grupos.
-No listes tú los skills acá: ese skill ya sabe preguntar en qué trabaja antes de mostrar.
+**Ojo con lo que felicitas:** mira qué comandos `/cortex-edge:*` tienes disponibles antes de
+afirmar. Con el plugin viene todo; con la instalación manual puede haber solo el núcleo.
 
-**Si elige 2** → cierra corto y cálido, **recordándole cómo volver**, sin insistir:
+**Si elige 1** → continúa con `/cortex-edge:skills` (ese skill ya sabe preguntar en qué trabaja
+antes de mostrar; no listes tú los skills acá).
+
+**Si elige 2** → cierra corto y cálido, recordándole cómo volver:
 
 > Perfecto, arrancamos livianos. Cuando quieras verlos, corre `/cortex-edge:skills` — están ahí
 > esperando. ¡A trabajar! 🌱
 
-**Nunca insistas después de un "ahora no".** Y no repitas la invitación en sesiones siguientes:
-si la persona quiso, ya sabe el comando.
+**Nunca insistas después de un "ahora no"**, ni repitas la invitación en sesiones siguientes.
 
-## 3. Si falta algo — todo el contexto en la misma pregunta
+---
 
-**Nunca instales sin permiso, y nunca pidas permiso a ciegas.** La persona debe poder decidir con lo
-que ve, sin abrir nada más. En un solo mensaje:
+## Si falta algo (dentro del paso 2)
 
-1. **Qué falta** y **para qué sirve**, sin jerga.
-2. **Qué dejará de funcionar** — honesto: el resto del plugin sirve igual, solo se pierde la memoria.
-3. **Qué harías exactamente**: el comando a la vista, cuánto demora, y qué **no** toca de su sistema.
+**Nunca instales sin permiso, y nunca pidas permiso a ciegas.** La persona debe poder decidir con
+lo que ve. En un solo mensaje, sin salir del paso 2:
 
-Ejemplo:
-
+> 🌱 **Cortex Edge · Paso 2 de 4 — Requisitos**
+>
 > Para recordar tus conversaciones, Cortex Edge usa un pequeño programa que corre al abrir cada
 > sesión, y ese programa necesita **Python 3**. No lo tienes instalado.
 >
@@ -131,18 +142,17 @@ Ejemplo:
 > instalador oficial, y no modifica nada más de tu sistema ni de tu Claude Code.
 >
 > ¿Lo instalo?
+>
+> → Si aceptas: lo instalo, verifico y seguimos al paso 3
 
 **Comando según sistema:** Windows `winget install Python.Python.3.12` · macOS `brew install python`
 · Linux `sudo apt install python3` (o el gestor de su distribución). Si no hay gestor disponible,
 **no improvises**: dale el enlace oficial (python.org/downloads) y ofrece volver a verificar después.
 
-### Si dice que sí
-Instala, **vuelve a verificar** que quedó disponible, y **cierra con el mismo bloque del punto 2**
-(qué quedó activo + qué sigue) — acaba de completar la instalación, ahora sí necesita el onboarding.
-Si la instalación falla, dilo claro y ofrece el camino manual; no lo dejes creyendo que quedó listo.
+**Si dice que sí** → instala, **vuelve a verificar**, y sigue al paso 3 normalmente. Si la
+instalación falla, dilo claro y ofrece el camino manual; no lo dejes creyendo que quedó listo.
 
-### Si dice que no
-Respeta la respuesta y cierra con calidez, sin insistir ni repetir el argumento:
+**Si dice que no** → respeta la respuesta y cierra con calidez, sin insistir:
 
 > Sin problema. El resto de Cortex Edge funciona igual — solo la memoria entre sesiones queda en
 > pausa. Si algún día cambias de opinión, corre `/cortex-edge:setup` y lo dejamos andando en un
@@ -155,5 +165,6 @@ Deja la puerta abierta. Que quede con ganas de volver, no con la sensación de h
 - **No pidas permiso para lo que no hace falta.** Si Python ya está, ni lo menciones.
 - **Una sola pregunta.** Si faltan dos cosas, agrúpalas; no interrogues.
 - **Nunca instales software del sistema en silencio**, aunque tengas permisos.
-- **Breve no es seco.** Confirmar en una línea y desaparecer deja a la persona sin saber qué hacer:
-  el objetivo es que termine sabiendo qué gana y cuál es su siguiente paso.
+- **Breve no es seco.** Confirmar en una línea y desaparecer deja a la persona sin saber qué hacer.
+- **Si algo la manda a una pantalla que no es tuya** (por ejemplo el explorador de plugins de
+  Claude Code), **avísale antes**: qué va a ver, que no es de Cortex Edge, y qué tiene que hacer ahí.

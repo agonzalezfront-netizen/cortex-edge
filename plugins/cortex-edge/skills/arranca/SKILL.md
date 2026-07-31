@@ -22,6 +22,13 @@ sola al inicio — este comando la complementa con el "dónde quedamos" del últ
 
 ## Principio de UX
 
-**El contexto va donde está la decisión.** Si necesitas preguntarle algo a la persona, dale primero
-lo que necesita para poder responder — ejemplos concretos, no una pregunta abierta al vacío. Y al
-terminar, dile **qué cambió y cuál es el siguiente paso**, no solo que terminaste.
+**Ubicación y rumbo, siempre.** Cada mensaje abre diciendo en qué parte del recorrido está la
+persona y cierra diciendo qué sigue. Si llega desde `/cortex-edge:setup`, viene del paso 4 — no la
+dejes sin saber dónde está parada.
+
+**El contexto va donde está la decisión.** Si preguntas algo, primero da lo necesario para poder
+responder — ejemplos concretos, no una pregunta abierta al vacío. Al terminar, di **qué cambió y
+cuál es el siguiente paso**, no solo que terminaste.
+
+**Si la mandas a una pantalla que no es tuya** (el explorador de plugins de Claude Code, la web de
+un skill), **avísale antes**: qué va a ver, que eso no es Cortex Edge, y qué tiene que hacer ahí.
