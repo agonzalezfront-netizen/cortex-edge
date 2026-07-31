@@ -24,7 +24,7 @@ Toda instalación de Cortex Edge trae un **núcleo** que no depende de ninguna f
 | Feature | Qué hace | Depende de | Estado |
 |---|---|---|---|
 | `cortex-start-close` | `/arranca` y `/cierra` — retoma donde quedaste, y cierra dejando un handoff | núcleo (memoria) | ✅ lista |
-| `cortex-skills` | descubrir e instalar skills | — | 🚧 próxima |
+| `cortex-skills` | descubrir e instalar skills desde un catálogo curado | núcleo | ✅ lista |
 
 ## Instalación — dos comandos ⚡
 
@@ -45,6 +45,7 @@ Después lo usas así:
 | `/cortex-edge:arranca` · `/cortex-edge:start` | Retoma donde quedaste la última sesión |
 | `/cortex-edge:cierra` · `/cortex-edge:close` | Cierra la sesión guardando memoria + handoff |
 | `/cortex-edge:memoria` | Guarda algo en la memoria persistente |
+| `/cortex-edge:skills` | Explora el catálogo e instala los skills que te sirvan |
 
 **Dónde vive tu memoria:** en `~/.claude/cortex-memory/` por defecto — se crea sola.
 ¿La prefieres dentro de tu Obsidian (o donde sea)? Define la variable de entorno

@@ -1,7 +1,7 @@
 {
   "name": "cortex-edge",
-  "description": "Turns Claude Code into a refined second brain: persistent memory across sessions, a rigorous critical stance (never a yes-man), and /start + /close session continuity. Bilingual EN/ES.",
-  "version": "1.0.0",
+  "description": "Turns Claude Code into a refined second brain: persistent memory across sessions, a rigorous critical stance (never a yes-man), /start + /close session continuity, and a curated skills catalog it installs for you. Bilingual EN/ES.",
+  "version": "1.1.0",
   "author": {
     "name": "Alberto González"
   },

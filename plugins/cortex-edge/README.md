@@ -24,7 +24,7 @@ Every Cortex Edge install ships a **core** that does not depend on any feature:
 | Feature | What it does | Depends on | Status |
 |---|---|---|---|
 | `cortex-start-close` | `/start` and `/close` — pick up where you left off, and close leaving a handoff | core (memory) | ✅ ready |
-| `cortex-skills` | discover and install skills | — | 🚧 next |
+| `cortex-skills` | discover and install skills from a curated catalog | core | ✅ ready |
 
 ## Install — two commands ⚡
 
@@ -45,6 +45,7 @@ Then use it:
 | `/cortex-edge:start` · `/cortex-edge:arranca` | Pick up where you left off last session |
 | `/cortex-edge:close` · `/cortex-edge:cierra` | Close the session saving memory + a handoff |
 | `/cortex-edge:memoria` | Save something to persistent memory |
+| `/cortex-edge:skills` | Browse the catalog and install the skills that fit your work |
 
 **Where your memory lives:** `~/.claude/cortex-memory/` by default — created automatically.
 Prefer it inside your Obsidian vault (or anywhere else)? Set the `CORTEX_MEMORY_PATH`
