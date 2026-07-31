@@ -42,6 +42,11 @@ Después lo usas así:
 | `/cortex-edge:skills` | Explora el catálogo e instala los skills que te sirvan |
 | `/cortex-edge:setup` | Verifica que todo esté listo y ofrece instalar lo que falte |
 
+> **Si `/reload-plugins` te dice `0 skills`, está todo bien.** Ese contador solo mira los
+> directorios `commands/`, y los comandos de Cortex Edge viven en `skills/` (el formato
+> recomendado para plugins nuevos). Para comprobar que están, escribe `/cortex-edge:` y
+> deberías verlos aparecer — o simplemente corre `/cortex-edge:setup`.
+
 **Primer paso recomendado:** ejecuta `/cortex-edge:setup`. Comprueba que tengas lo necesario y,
 si falta algo, te explica para qué sirve y te pregunta antes de instalar nada.
 
