@@ -1,7 +1,7 @@
 {
   "name": "cortex-edge",
   "description": "Turns Claude Code into a collaborator that remembers you, challenges you, and picks up where you left off: persistent memory across sessions, a rigorous critical stance (never a yes-man), session continuity, and a curated skills catalog it installs for you. Bilingual EN/ES.",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "author": {
     "name": "Alberto González"
   },

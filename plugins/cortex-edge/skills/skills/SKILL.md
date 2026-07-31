@@ -45,3 +45,9 @@ esperar a que se los nombren. Confírmale en una línea que quedó activo.
 - **Si pide el skill equivocado, dilo.** Propón el que de verdad calza y explica por qué — la persona
   siempre puede insistir, pero primero merece saber cuál es el camino ideal.
 - **Sin uso performativo.** Un skill que no aporta valor está tan mal como ignorar uno que sí.
+
+## Principio de UX
+
+**El contexto va donde está la decisión.** Si necesitas preguntarle algo a la persona, dale primero
+lo que necesita para poder responder — ejemplos concretos, no una pregunta abierta al vacío. Y al
+terminar, dile **qué cambió y cuál es el siguiente paso**, no solo que terminaste.

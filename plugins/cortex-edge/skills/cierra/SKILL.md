@@ -29,3 +29,9 @@ Sobrescribe el HANDOFF anterior (siempre refleja el estado más reciente).
 
 **3. Confirma al usuario** en una línea: qué guardaste en memoria y que el handoff quedó listo para la
 próxima vez.
+
+## Principio de UX
+
+**El contexto va donde está la decisión.** Si necesitas preguntarle algo a la persona, dale primero
+lo que necesita para poder responder — ejemplos concretos, no una pregunta abierta al vacío. Y al
+terminar, dile **qué cambió y cuál es el siguiente paso**, no solo que terminaste.

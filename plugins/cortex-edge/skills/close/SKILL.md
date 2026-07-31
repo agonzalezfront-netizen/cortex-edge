@@ -27,3 +27,9 @@ save trivia or what's already in the code.
 Overwrite the previous handoff (it always reflects the most recent state).
 
 **3. Confirm to the user** in one line: what you saved to memory and that the handoff is ready. (Español: `/cierra`.)
+
+## Principio de UX
+
+**El contexto va donde está la decisión.** Si necesitas preguntarle algo a la persona, dale primero
+lo que necesita para poder responder — ejemplos concretos, no una pregunta abierta al vacío. Y al
+terminar, dile **qué cambió y cuál es el siguiente paso**, no solo que terminaste.
