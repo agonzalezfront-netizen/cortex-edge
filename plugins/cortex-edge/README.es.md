@@ -58,22 +58,35 @@ antes de instalar nada.
 <details>
 <summary>🔄 Cómo actualizar a una versión nueva</summary>
 
-**Lo más simple, desde tu terminal** (no abre ninguna ventana):
+**Lo más simple: pídeselo a tu Claude.** Dentro de Claude Code, escríbele:
+
+> *actualiza el plugin cortex-edge*
+
+Él corre los comandos, **detecta solo con qué alcance lo tienes instalado** (usuario o proyecto) y
+lo deja aplicado. Es la vía recomendada porque no tienes que saber nada de lo de abajo.
+
+**A mano, desde tu terminal**, si prefieres:
 
 ```bash
 claude plugin marketplace update cortex-edge
-claude plugin update cortex-edge
+claude plugin update cortex-edge@cortex-edge
 ```
 
-Después, dentro de Claude Code, `/reload-plugins` para aplicarlo sin reiniciar.
+⚠️ **Si lo instalaste con alcance de proyecto**, el segundo comando falla salvo que se lo digas:
 
-**Si en cambio usas `/plugin` dentro de Claude Code**, se te va a abrir el **explorador de plugins
-de Claude Code** — una lista con cientos de plugins de todo el mundo. **Eso no es Cortex Edge ni
-nuestro catálogo**: es el gestor propio de Claude Code, y aparece igual para cualquier plugin.
-Ahí ve a la pestaña **Installed**, busca `cortex-edge` y actualízalo desde ahí.
+```bash
+claude plugin update cortex-edge@cortex-edge --scope project
+```
 
-Claude Code también actualiza los plugins solo en segundo plano, así que tarde o temprano te llega
-sin hacer nada.
+Después, dentro de Claude Code, `/reload-plugins` para aplicarlo **sin reiniciar** (el CLI dice
+"restart required", pero `/reload-plugins` basta).
+
+**Si usas `/plugin` dentro de Claude Code**, se abre el **explorador de plugins de Claude Code** —
+una lista con cientos de plugins de todo el mundo. **Eso no es Cortex Edge ni nuestro catálogo**:
+es el gestor propio de Claude Code, igual para cualquier plugin. Ve a la pestaña **Installed**,
+busca `cortex-edge` y actualízalo ahí.
+
+Claude Code también actualiza plugins solo en segundo plano, así que tarde o temprano te llega.
 </details>
 
 <details>
