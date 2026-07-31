@@ -9,6 +9,21 @@ Those findings are marked 👤.
 
 ---
 
+## 1.12.1
+- 👤 El CHANGELOG se quedaba atrás respecto a la versión publicada. Ahora `publicar.py` **no deja
+  publicar** si la versión del manifiesto no está documentada acá.
+
+## 1.12.0
+- 👤 **Visita guiada en la primera sesión.** El onboarding ya no termina al instalar: `setup` te
+  invita a abrir una sesión nueva y ahí `/cortex-edge:arranca` detecta que es tu primera vez, te
+  demuestra la memoria funcionando (recuerda tu idioma), te muestra qué puedes hacer con ejemplos
+  reales, y **recién entonces** te ofrece el catálogo.
+- `setup` ya no ofrece el catálogo: apilar capacidades antes de entender lo que tienes es construir
+  sin cimientos.
+
+## 1.11.3
+- Se agrega este CHANGELOG, enlazado desde ambos READMEs.
+
 ## 1.11.2
 - 👤 El catálogo ahora dice **qué skills** hay en cada grupo (superpowers, docx, dataviz…), no solo
   la categoría. Antes había que abrir los cinco grupos para saber qué contenían.
