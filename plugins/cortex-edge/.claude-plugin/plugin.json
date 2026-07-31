@@ -1,0 +1,11 @@
+{
+  "name": "cortex-edge",
+  "description": "Turns Claude Code into a refined second brain: persistent memory across sessions, a rigorous critical stance (never a yes-man), and /start + /close session continuity. Bilingual EN/ES.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Alberto González"
+  },
+  "homepage": "https://github.com/agonzalezfront-netizen/cortex-edge",
+  "repository": "https://github.com/agonzalezfront-netizen/cortex-edge",
+  "license": "MIT"
+}

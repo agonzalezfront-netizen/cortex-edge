@@ -1,0 +1,14 @@
+{
+  "name": "cortex-edge",
+  "owner": {
+    "name": "Alberto González"
+  },
+  "plugins": [
+    {
+      "name": "cortex-edge",
+      "source": "./plugins/cortex-edge",
+      "description": "Turns Claude Code into a refined second brain: persistent memory across sessions, a rigorous critical stance, and /start + /close continuity. EN/ES."
+    }
+  ],
+  "description": "Cortex Edge — modular toolkit that turns Claude Code into a refined second brain. Memory, critical stance and session continuity. EN/ES."
+}
