@@ -55,6 +55,26 @@ Prefer it inside your Obsidian vault (or anywhere else)? Set the `CORTEX_MEMORY_
 environment variable to that path and the hook will use it instead.
 
 <details>
+<summary>🔄 How to update to a new version</summary>
+
+**Simplest, from your terminal** (opens no window):
+
+```bash
+claude plugin marketplace update cortex-edge
+claude plugin update cortex-edge
+```
+
+Then, inside Claude Code, run `/reload-plugins` to apply it without restarting.
+
+**If you use `/plugin` inside Claude Code instead**, it opens **Claude Code's plugin browser** — a
+list of hundreds of plugins from everywhere. **That is not Cortex Edge or our catalog**: it's Claude
+Code's own manager, and it looks the same for any plugin. Go to the **Installed** tab, find
+`cortex-edge` and update it there.
+
+Claude Code also updates plugins on its own in the background, so it reaches you eventually anyway.
+</details>
+
+<details>
 <summary>📦 Manually from this repo — expand</summary>
 
 Prefer to install by hand, or want just one piece? Download a zip and let your Claude install it:

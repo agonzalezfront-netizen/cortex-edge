@@ -56,6 +56,27 @@ antes de instalar nada.
 `CORTEX_MEMORY_PATH` con esa ruta y el hook la usará en su lugar.
 
 <details>
+<summary>🔄 Cómo actualizar a una versión nueva</summary>
+
+**Lo más simple, desde tu terminal** (no abre ninguna ventana):
+
+```bash
+claude plugin marketplace update cortex-edge
+claude plugin update cortex-edge
+```
+
+Después, dentro de Claude Code, `/reload-plugins` para aplicarlo sin reiniciar.
+
+**Si en cambio usas `/plugin` dentro de Claude Code**, se te va a abrir el **explorador de plugins
+de Claude Code** — una lista con cientos de plugins de todo el mundo. **Eso no es Cortex Edge ni
+nuestro catálogo**: es el gestor propio de Claude Code, y aparece igual para cualquier plugin.
+Ahí ve a la pestaña **Installed**, busca `cortex-edge` y actualízalo desde ahí.
+
+Claude Code también actualiza los plugins solo en segundo plano, así que tarde o temprano te llega
+sin hacer nada.
+</details>
+
+<details>
 <summary>📦 Manual desde este repo — desplegar</summary>
 
 ¿Prefieres instalarlo a mano, o quieres solo una pieza? Baja un zip y deja que tu Claude lo instale:
