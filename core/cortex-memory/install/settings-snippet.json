@@ -1,0 +1,15 @@
+{
+  "_comentario": "Esto es SOLO el bloque del hook de memoria. Agregá la sección 'hooks' a tu ~/.claude/settings.json existente. Si ya tenés 'hooks', fusioná (agregá 'SessionStart' dentro). Reemplazá TU_USUARIO por tu usuario de Windows.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"C:/Users/TU_USUARIO/.claude/hooks/cargar-memoria.py\""
+          }
+        ]
+      }
+    ]
+  }
+}
