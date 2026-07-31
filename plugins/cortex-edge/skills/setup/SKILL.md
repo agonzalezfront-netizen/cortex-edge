@@ -118,25 +118,24 @@ Felicita, ofrece el catálogo, y **deja siempre la salida a la vista**:
 > 🎉 **Ya está, terminaste.** De aquí en adelante voy a recordar lo que guardemos, te voy a
 > cuestionar cuando vea un problema, y cada sesión va a empezar donde terminó la anterior.
 >
-> **¿Quieres potenciarlo?** Hay un catálogo de skills que le dan capacidades concretas —
-> depuración rigurosa, redactar documentos, investigar, diseño, video. Yo los elijo y los uso
-> cuando la tarea lo pide; tú no tienes que acordarte de nada.
+> **Tu siguiente paso, y vale la pena hacerlo ahora:**
 >
-> **1.** Sí, muéstrame qué hay
-> **2.** Ahora no — ya sé dónde encontrarte 🌱
+> **Cierra esta conversación y abre una nueva**, y ahí escribe **`/cortex-edge:arranca`**.
+>
+> ¿Por qué una sesión nueva? Porque la memoria se carga **al arrancar**. En la que estamos ahora
+> todavía no está activa. En la próxima voy a recordar tu idioma sin que me lo digas — y ahí te
+> hago un recorrido por todo lo que puedes hacer.
+
+**No ofrezcas el catálogo de skills acá.** Esa invitación va en el recorrido de `arranca`, cuando
+la persona ya vio funcionar lo básico. Ofrecerle instalar cosas antes de que entienda lo que tiene
+es apilar sin cimientos.
+
+Si insiste en verlo ahora, muéstraselo igual — pero la ruta recomendada es la de arriba.
 
 **Ojo con lo que felicitas:** mira qué comandos `/cortex-edge:*` tienes disponibles antes de
 afirmar. Con el plugin viene todo; con la instalación manual puede haber solo el núcleo.
 
-**Si elige 1** → continúa con `/cortex-edge:skills` (ese skill ya sabe preguntar en qué trabaja
-antes de mostrar; no listes tú los skills acá).
-
-**Si elige 2** → cierra corto y cálido, recordándole cómo volver:
-
-> Perfecto, arrancamos livianos. Cuando quieras verlos, corre `/cortex-edge:skills` — están ahí
-> esperando. ¡A trabajar! 🌱
-
-**Nunca insistas después de un "ahora no"**, ni repitas la invitación en sesiones siguientes.
+**Nunca insistas** ni repitas la invitación en sesiones siguientes.
 
 ---
 
