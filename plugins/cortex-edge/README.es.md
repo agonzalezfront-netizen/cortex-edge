@@ -40,6 +40,7 @@ Después lo usas así:
 | `/cortex-edge:cierra` · `/cortex-edge:close` | Cierra la sesión guardando memoria + handoff |
 | `/cortex-edge:memoria` | Guarda algo en la memoria persistente |
 | `/cortex-edge:skills` | Explora el catálogo e instala los skills que te sirvan |
+| `/cortex-edge:obsidian` | Conecta tu memoria con Obsidian para verla como notas (opcional) |
 | `/cortex-edge:setup` | Verifica que todo esté listo y ofrece instalar lo que falte |
 
 > **Si `/reload-plugins` te dice `0 skills`, está todo bien.** Ese contador solo mira los

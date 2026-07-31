@@ -50,7 +50,14 @@ Estás iniciando una sesión de trabajo con el usuario. Ayúdale a retomar sin r
    >   por defecto. No tienes que pedirlo.
    > • **Revisar que todo esté bien** — `/cortex-edge:setup`, por si algún día algo falla.
 
-   **c) Recién ahora, el catálogo.**
+   **c) Cuéntale dónde vive su memoria, y la opción de Obsidian.** En dos líneas:
+
+   > Todo esto se guarda como **archivos de texto** en una carpeta tuya — nada encerrado en una
+   > base de datos, puedes abrirlos con el Bloc de notas. Y si quieres **verlos como notas**
+   > (buscarlos, enlazarlos, leerlos desde el teléfono), puedo conectarlos con **Obsidian**, que es
+   > gratis y opcional: `/cortex-edge:obsidian` y lo dejo andando. Funciona igual con o sin él.
+
+   **d) Recién ahora, el catálogo.**
 
    > **¿Le sumamos capacidades?** Hay un catálogo de skills — depuración rigurosa, redactar
    > documentos, investigación, diseño, video. Los uso solo cuando la tarea lo pide.

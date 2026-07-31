@@ -39,6 +39,7 @@ Then use it:
 | `/cortex-edge:close` · `/cortex-edge:cierra` | Close the session saving memory + a handoff |
 | `/cortex-edge:memoria` | Save something to persistent memory |
 | `/cortex-edge:skills` | Browse the catalog and install the skills that fit your work |
+| `/cortex-edge:obsidian` | Connect your memory to Obsidian to browse it as notes (optional) |
 | `/cortex-edge:setup` | Check everything is ready and offer to install what's missing |
 
 > **If `/reload-plugins` reports `0 skills`, nothing is wrong.** That counter only looks at

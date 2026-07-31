@@ -9,6 +9,14 @@ Those findings are marked 👤.
 
 ---
 
+## 1.14.0
+- **Nuevo `/cortex-edge:obsidian`** — conecta tu carpeta de memoria con Obsidian para verla como
+  notas: buscar, enlazar, ver el mapa, leerla desde el teléfono. Si no lo tienes, se ofrece a
+  instalarlo; migra tus recuerdos **copiando, nunca moviendo**, verifica que llegaron completos y
+  deja la carpeta original de respaldo. **Obsidian sigue siendo opcional**: la memoria funciona
+  igual sin él.
+- El recorrido de la primera sesión ahora cuenta dónde viven tus recuerdos y menciona esta opción.
+
 ## 1.13.0
 - 👤 **El recorrido ya no se decide por cuánta memoria tienes.** Antes se usaba "tiene pocos
   recuerdos" como señal de "es nuevo", y alguien que llevaba semanas usándolo sin que nadie le
