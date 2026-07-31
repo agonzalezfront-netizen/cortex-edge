@@ -39,6 +39,10 @@ Después lo usas así:
 | `/cortex-edge:cierra` · `/cortex-edge:close` | Cierra la sesión guardando memoria + handoff |
 | `/cortex-edge:memoria` | Guarda algo en la memoria persistente |
 | `/cortex-edge:skills` | Explora el catálogo e instala los skills que te sirvan |
+| `/cortex-edge:setup` | Verifica que todo esté listo y ofrece instalar lo que falte |
+
+**Primer paso recomendado:** ejecuta `/cortex-edge:setup`. Comprueba que tengas lo necesario y,
+si falta algo, te explica para qué sirve y te pregunta antes de instalar nada.
 
 **Dónde vive tu memoria:** en `~/.claude/cortex-memory/` por defecto — se crea sola.
 ¿La prefieres dentro de tu Obsidian (o donde sea)? Define la variable de entorno

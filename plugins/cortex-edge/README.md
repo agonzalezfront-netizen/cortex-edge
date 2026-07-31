@@ -38,6 +38,10 @@ Then use it:
 | `/cortex-edge:close` · `/cortex-edge:cierra` | Close the session saving memory + a handoff |
 | `/cortex-edge:memoria` | Save something to persistent memory |
 | `/cortex-edge:skills` | Browse the catalog and install the skills that fit your work |
+| `/cortex-edge:setup` | Check everything is ready and offer to install what's missing |
+
+**Recommended first step:** run `/cortex-edge:setup`. It checks you have what's needed and, if
+something is missing, explains what it's for and asks before installing anything.
 
 **Where your memory lives:** `~/.claude/cortex-memory/` by default — created automatically.
 Prefer it inside your Obsidian vault (or anywhere else)? Set the `CORTEX_MEMORY_PATH`
