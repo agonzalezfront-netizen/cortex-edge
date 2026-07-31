@@ -64,6 +64,15 @@ environment variable to that path and the hook will use it instead.
 It runs the commands, **figures out on its own which scope you installed it with** (user or
 project) and applies it. This is the recommended path — you don't need to know anything below.
 
+**To check which version you have:**
+
+```bash
+claude plugin list                    # all of them, with version, scope and status
+claude plugin details cortex-edge     # details for one
+```
+
+(`/cortex-edge:setup` tells you too, and warns you if a newer version exists.)
+
 **By hand, from your terminal**, if you prefer:
 
 ```bash

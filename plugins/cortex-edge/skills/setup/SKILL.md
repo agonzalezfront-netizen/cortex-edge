@@ -67,6 +67,21 @@ Verifica sin narrar cada comando:
 | **Python 3** | `python --version` (y `python3 --version` si falla) | El hook que carga tu memoria al iniciar cada sesión |
 | **git** | `git --version` | Que el plugin se actualice solo cuando salga una versión nueva |
 | **Carpeta de memoria** | ¿existe `$CORTEX_MEMORY_PATH` o `~/.claude/cortex-memory/`? | Donde viven tus recuerdos |
+| **Versión instalada** | `claude plugin list` (o `claude plugin details cortex-edge`) | Saber si estás al día |
+
+**Sobre la versión — di siempre cuál tiene, y si hay una más nueva, ofrécele actualizar.** Una
+persona no tiene forma de saber que existe una versión mejor: es tarea tuya avisarle. Para
+comparar, refresca el catálogo (`claude plugin marketplace update cortex-edge`) y mira si el
+origen trae una superior a la instalada.
+
+Si está desactualizado, díselo con el mismo criterio de siempre — qué gana, y preguntando:
+
+> Tienes **Cortex Edge 1.3.0** y ya existe la **1.9.1**. Las versiones nuevas mejoraron sobre todo
+> la guía de instalación y el catálogo de skills. ¿La actualizo? Son unos segundos.
+
+**Si acepta**: actualiza con `claude plugin update cortex-edge@cortex-edge` — y si el plugin está
+instalado con **alcance de proyecto**, agrega `--scope project`, porque si no falla. Después
+`/reload-plugins` aplica sin reiniciar. **Si dice que no**, sigue normal con la que tiene.
 
 **Si está todo** → dilo en una línea con las versiones, anuncia qué sigue, y pasa al paso 3.
 

@@ -65,6 +65,15 @@ antes de instalar nada.
 Él corre los comandos, **detecta solo con qué alcance lo tienes instalado** (usuario o proyecto) y
 lo deja aplicado. Es la vía recomendada porque no tienes que saber nada de lo de abajo.
 
+**Para saber qué versión tienes:**
+
+```bash
+claude plugin list                    # todos, con version, alcance y estado
+claude plugin details cortex-edge     # detalle de uno
+```
+
+(`/cortex-edge:setup` también te lo dice, y te avisa si hay una version mas nueva.)
+
 **A mano, desde tu terminal**, si prefieres:
 
 ```bash
