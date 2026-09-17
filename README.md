@@ -218,3 +218,11 @@ Every user-facing text ships in **English and Spanish**. Commands ship language 
 ---
 
 *🌱 Cortex Edge grows one refined feature at a time.*
+
+## License / Licencia
+
+**EN:** Licensed under the [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0): you may use, copy, modify and share this software for any **non-commercial** purpose. Commercial use requires a separate license from the author.
+
+**ES:** Publicado bajo la licencia [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0): puedes usar, copiar, modificar y compartir este software para cualquier fin **no comercial**. El uso comercial requiere una licencia aparte del autor.
+
+Copyright © 2026 Alberto González.
