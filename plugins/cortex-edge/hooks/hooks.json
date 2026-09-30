@@ -5,7 +5,24 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/cargar-memoria.py\""
+            "command": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/cargar-nucleo.py\"",
+            "timeout": 15
+          },
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/cargar-memoria.py\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PLUGIN_ROOT}/hooks/reloj.py\"",
+            "timeout": 10
           }
         ]
       }

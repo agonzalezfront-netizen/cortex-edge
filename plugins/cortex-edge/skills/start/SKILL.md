@@ -4,84 +4,88 @@ description: Resume the session — load where you left off last time
 
 You are starting a work session. Help the user pick up without re-reading everything:
 
-1. Find the user's memory folder (the same one the SessionStart hook loads, where `MEMORY.md` lives; the
-   path is in the CLAUDE.md).
+1. Find the user's memory folder: the one the SessionStart hook loads, where `MEMORY.md` lives. Its
+   path appears in the context loaded at startup ("Memory folder"); otherwise it's
+   `$CORTEX_MEMORY_PATH`, or `~/.claude/cortex-memory/` by default.
 2. Look for `HANDOFF.md` there. If it exists, read it in full.
 3. Summarize in plain language:
    - **Where we left off:** the current state from the last session.
    - **Pending:** what's left, with context.
    - **Suggested next step:** where to continue today.
-4. **¿Ya le mostraste qué puede hacer?** La señal NO es cuánta memoria tiene — alguien puede llevar
-   semanas guardando cosas sin que nadie le haya explicado nunca los comandos. La señal es un
-   recuerdo marcador: busca en la carpeta de memoria un archivo `cortex-edge-recorrido.md`.
+4. **Have you shown them what they can do yet?** The signal is NOT how much memory they have: someone
+   may have been saving things for weeks without anyone ever explaining the commands. The signal is a
+   marker memory: look in the memory folder for a file named `cortex-edge-recorrido.md`.
 
-   **Si NO existe** → todavía no vio el recorrido. Dos casos:
+   **If it does NOT exist** → they haven't had the tour yet. Two cases:
 
-   - **Memoria vacía o casi** (recién instaló): hazle el recorrido completo del punto 5, sin preguntar.
-   - **Ya tiene recuerdos** (venía usándolo sin que nadie le explicara): **ofrécelo, no lo impongas**.
+   - **Empty or nearly empty memory** (just installed): give the full tour in step 5, without asking.
+   - **They already have memories** (they've been using it without anyone explaining): **offer it,
+     don't impose it**.
 
-     > Por cierto, veo que ya vienes usándome pero creo que nunca te mostré todo lo que puedes
-     > hacer. ¿Te lo cuento en 30 segundos?
+     > By the way, I see you've been using me for a while, but I don't think I ever showed you
+     > everything you can do. Want the 30-second version?
      >
-     > **1.** Dale  ·  **2.** Ahora no, vamos al trabajo
+     > **1.** Sure  ·  **2.** Not now, let's get to work
 
-   **En cuanto termines el recorrido** (o si dice que no), **guarda el marcador**: un archivo
-   `cortex-edge-recorrido.md` de tipo `reference` diciendo que ya se le presentó, con la fecha.
-   Así no se lo repites nunca más. Formato en `/cortex-edge:memoria`.
+   **As soon as you finish the tour** (or if they say no), **save the marker**: a file
+   `cortex-edge-recorrido.md` of type `reference` saying they've been shown the tour, with the date.
+   That way you never repeat it. Format in `/cortex-edge:memoria`.
 
-   **Si el marcador existe** → salta al punto 6. No repitas la presentación.
+   **If the marker exists** → skip to step 6. Don't repeat the introduction.
 
-5. **El recorrido.**
+5. **The tour.**
 
-   **a) Demuestra primero, explica después.** Si hay algún recuerdo suyo, úsalo como prueba viva:
+   **a) Show first, explain after.** If there's any memory of theirs, use it as live proof:
 
-   > 🌱 **Bienvenido de vuelta.** Fíjate: **recordé que prefieres el español** sin que me lo
-   > dijeras. Eso es la memoria, y ya está andando.
+   > 🌱 **Welcome back.** Notice: **I remembered you prefer English** without you telling me.
+   > That's memory, and it's already working.
 
-   **b) Muéstrale lo que tiene, con ejemplos reales y cuándo lo usaría.** Cuatro como máximo:
+   **b) Show them what they have, with real examples and when they'd use it.** Four at most:
 
-   > **Lo que puedes hacer desde ahora:**
+   > **What you can do from now on:**
    >
-   > • **Que recuerde cosas** — dime *"recuerda que prefiero explicaciones antes del código"* y lo
-   >   voy a saber siempre. También con `/cortex-edge:memoria`.
-   > • **Cerrar el día sin perder el hilo** — `/cortex-edge:close` guarda dónde quedamos; mañana
-   >   `/cortex-edge:start` lo retoma. Es lo que acabas de usar.
-   > • **Que te lleve la contra** — si veo un problema en tu plan te lo digo, no te doy la razón
-   >   por defecto. No tienes que pedirlo.
-   > • **Revisar que todo esté bien** — `/cortex-edge:setup`, por si algún día algo falla.
+   > • **Have me remember things** — say *"remember that I prefer explanations before code"* and
+   >   I'll always know it. Also with `/cortex-edge:memoria`.
+   > • **Close the day without losing the thread** — `/cortex-edge:close` saves where we left off;
+   >   tomorrow `/cortex-edge:start` picks it up. It's what you just used.
+   > • **Get pushback** — if I see a problem in your plan I'll tell you, instead of agreeing by
+   >   default. You don't have to ask for it.
+   > • **Check that everything works** — `/cortex-edge:setup`, in case something ever breaks.
 
-   **c) Cuéntale dónde vive su memoria, y la opción de Obsidian.** En dos líneas:
+   **c) Tell them where their memory lives, and the Obsidian option.** In two lines:
 
-   > Todo esto se guarda como **archivos de texto** en una carpeta tuya — nada encerrado en una
-   > base de datos, puedes abrirlos con el Bloc de notas. Y si quieres **verlos como notas**
-   > (buscarlos, enlazarlos, leerlos desde el teléfono), puedo conectarlos con **Obsidian**, que es
-   > gratis y opcional: `/cortex-edge:obsidian` y lo dejo andando. Funciona igual con o sin él.
+   > All of this is saved as **plain text files** in a folder of yours — nothing locked in a
+   > database; you can open them with any text editor. And if you want to **see them as notes**
+   > (search them, link them, read them on your phone), I can connect them to **Obsidian**, which is
+   > free and optional: `/cortex-edge:obsidian` and I'll set it up. It works the same with or
+   > without it.
 
-   **d) Recién ahora, el catálogo.**
+   **d) Only now, the catalog.**
 
-   > **¿Le sumamos capacidades?** Hay un catálogo de skills — depuración rigurosa, redactar
-   > documentos, investigación, diseño, video. Los uso solo cuando la tarea lo pide.
+   > **Want to add capabilities?** There's a catalog of skills — rigorous debugging, writing
+   > documents, research, design, video. I only use them when the task calls for it.
    >
-   > **1.** Muéstrame el catálogo  ·  **2.** Después — empecemos a trabajar 🌱
+   > **1.** Show me the catalog  ·  **2.** Later — let's start working 🌱
 
-   Si elige **2**, pregúntale en qué quiere trabajar. Si elige **1**, sigue con
-   `/cortex-edge:skills`. **Nunca insistas.**
+   If they pick **2**, ask what they want to work on. If they pick **1**, continue with
+   `/cortex-edge:skills`. **Never insist.**
 
-6. **Si no hay `HANDOFF.md`** pero ya conoce el producto: dilo en una línea, recuérdale que
-   `/cortex-edge:close` deja el resumen para la próxima, y pregúntale en qué trabaja hoy.
+6. **If there's no `HANDOFF.md`** but they already know the product: say so in one line, remind them
+   that `/cortex-edge:close` leaves the summary for next time, and ask what they're working on today.
 
-Don't invent state: if the handoff doesn't mention something, don't assume it. Memory (`MEMORY.md`) already
-loaded at startup — this command adds the "where we left off" from the last close. (Español: `/arranca`.)
+Don't invent state: if the handoff doesn't mention something, don't assume it. Memory (`MEMORY.md`)
+already loaded at startup — this command adds the "where we left off" from the last close. (Spanish:
+`/cortex-edge:arranca`.)
 
-## Principio de UX
+## UX principles
 
-**Ubicación y rumbo, siempre.** Cada mensaje abre diciendo en qué parte del recorrido está la
-persona y cierra diciendo qué sigue. Si llega desde `/cortex-edge:setup`, viene del paso 4 — no la
-dejes sin saber dónde está parada.
+**Location and direction, always.** Every message opens by saying where the person is in the flow
+and closes by saying what comes next. If they arrive from `/cortex-edge:setup`, they're coming from
+step 4 — don't leave them unsure where they stand.
 
-**El contexto va donde está la decisión.** Si preguntas algo, primero da lo necesario para poder
-responder — ejemplos concretos, no una pregunta abierta al vacío. Al terminar, di **qué cambió y
-cuál es el siguiente paso**, no solo que terminaste.
+**Context goes where the decision is.** If you ask something, first give what they need to answer —
+concrete examples, not an open question into the void. When you finish, say **what changed and
+what the next step is**, not just that you're done.
 
-**Si la mandas a una pantalla que no es tuya** (el explorador de plugins de Claude Code, la web de
-un skill), **avísale antes**: qué va a ver, que eso no es Cortex Edge, y qué tiene que hacer ahí.
+**If you send them to a screen that isn't yours** (Claude Code's plugin browser, a skill's website),
+**warn them first**: what they'll see, that it isn't Cortex Edge, and what they need to do there.

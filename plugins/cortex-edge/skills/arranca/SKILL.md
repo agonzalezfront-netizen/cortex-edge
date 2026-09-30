@@ -4,8 +4,9 @@ description: Retoma la sesión — carga dónde quedaste la última vez
 
 Estás iniciando una sesión de trabajo con el usuario. Ayúdale a retomar sin releer todo:
 
-1. Ubica la carpeta de memoria del usuario (la misma que carga el hook al inicio, donde está `MEMORY.md`;
-   la ruta figura en el CLAUDE.md).
+1. Ubica la carpeta de memoria del usuario: la misma que carga el hook al inicio, donde está `MEMORY.md`.
+   Su ruta aparece en el contexto cargado al inicio ("Carpeta de memoria"); si no, es
+   `$CORTEX_MEMORY_PATH` o, por defecto, `~/.claude/cortex-memory/`.
 2. Busca ahí un archivo `HANDOFF.md`. Si existe, léelo completo.
 3. Resume al usuario en lenguaje claro (sin jerga):
    - **Dónde quedamos:** el estado vigente de la última sesión.
@@ -71,7 +72,8 @@ Estás iniciando una sesión de trabajo con el usuario. Ayúdale a retomar sin r
    `/cortex-edge:cierra` deja el resumen para la próxima, y pregúntale en qué trabaja hoy.
 
 No inventes estado: si el HANDOFF no menciona algo, no lo asumas. La memoria (MEMORY.md) ya se cargó
-sola al inicio — este comando la complementa con el "dónde quedamos" del último cierre.
+sola al inicio — este comando la complementa con el "dónde quedamos" del último cierre. (En inglés:
+`/cortex-edge:start`.)
 
 ## Principio de UX
 

@@ -16,7 +16,8 @@ acaba de instalar esto es dejarlo mirando una página en blanco.
 ## Dónde / Where
 
 `$CORTEX_MEMORY_PATH` si está definida; si no, `~/.claude/cortex-memory/`.
-Es la misma carpeta que el hook `SessionStart` carga al inicio de cada conversación.
+Es la misma carpeta que el hook `SessionStart` carga al inicio de cada conversación (la ruta
+aparece en el contexto inicial como "Carpeta de memoria / Memory folder").
 
 ---
 
@@ -72,7 +73,8 @@ recursos externos: URLs, tableros, tickets).
    ```markdown
    - [Título corto](archivo.md) — de qué se trata en pocas palabras
    ```
-   `MEMORY.md` es solo el índice — nunca pongas ahí el contenido del recuerdo.
+   `MEMORY.md` es solo el índice — nunca pongas ahí el contenido del recuerdo. **Máximo 190
+   caracteres por línea** (ver abajo por qué).
 
 2. **Confirma explicando qué cambia**, no solo que guardaste:
 
@@ -82,6 +84,20 @@ recursos externos: URLs, tableros, tickets).
    Esa segunda frase es la que hace que la persona entienda para qué sirvió. Sin ella, "guardado"
    es un archivo más que no significa nada.
 
+## El índice tiene tope — y un índice truncado no se nota desde adentro
+
+`MEMORY.md` se carga completo al inicio de cada sesión, pero Claude Code corta lo que inyecta un
+hook a **10 000 caracteres**. Lo que queda fuera **no existe para ti**: no hay error ni aviso del
+sistema, simplemente no lo recuerdas y no tienes cómo saber que falta. Por eso:
+
+- **Cada línea del índice, 190 caracteres como máximo.** Título + resumen de una frase. El detalle
+  va dentro del archivo del recuerdo, nunca en el índice.
+- **El hook te avisa** cuando el índice pasa de ~8 000 caracteres (⚠️ en el contexto inicial) y,
+  si aun así no cabe, carga solo las primeras líneas y dice cuántas quedaron fuera. Si ves ese
+  aviso, **díselo a la persona y consolida en la misma sesión**: fusiona recuerdos del mismo tema,
+  acorta líneas, borra lo obsoleto.
+- **Pon arriba lo que más importa.** Si alguna vez se corta, se corta por abajo.
+
 ## Reglas
 
 - **Antes de crear, busca.** Si ya existe un archivo que cubre el tema, actualiza ese en vez de
@@ -89,3 +105,5 @@ recursos externos: URLs, tableros, tickets).
 - **No guardes lo obvio ni lo efímero**: nada que el repositorio o el historial ya registren, ni
   cosas que solo importan en esta conversación.
 - **Fechas absolutas.** "El martes" no significa nada dentro de tres semanas: escribe la fecha.
+- **Si la persona tuvo que recordarte algo, es un bug.** Guárdalo como `feedback` con **Por qué:**
+  y **Cómo aplicarlo:**, para que no vuelva a pasar.

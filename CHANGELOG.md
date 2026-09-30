@@ -9,6 +9,27 @@ Those findings are marked 👤.
 
 ---
 
+## 1.16.0 — 2026-09-30 · el núcleo funciona de verdad / the core really works
+- **La postura crítica y el protocolo de memoria ahora llegan al modelo en la instalación por
+  plugin.** Antes el hook solo inyectaba `MEMORY.md`: la postura y el protocolo (qué guardar,
+  tipos `user`/`feedback`/`project`/`reference`, verificar antes de dar algo por novedad, "si te
+  tienen que recordar algo, es un bug") solo existían en la instalación manual. Un nuevo hook,
+  `cargar-nucleo.py`, los lee de `POSTURA-CRITICA.md` y `PROTOCOLO-MEMORIA.md` (una sola fuente)
+  y los carga al inicio de cada sesión, en el idioma de la persona si se conoce.
+- **Control de tamaño del índice.** Claude Code corta lo que inyecta cada hook a 10 000 caracteres,
+  y desde adentro un índice truncado no se nota. El hook de memoria avisa al pasar de ~8 000
+  caracteres, marca las líneas de más de 190, y si aun así no cabe corta por líneas completas y
+  **dice** cuántas quedaron fuera. La regla de 190 caracteres queda documentada en `memoria`.
+- **Fecha y hora en cada mensaje** (hook `UserPromptSubmit`): día de la semana, fecha ISO, hora y
+  zona. Activo por defecto; se apaga con `{"reloj": false}` en `cortex-edge.json`, dentro de la
+  carpeta de memoria.
+- **`setup` ya no promete lo que no verificó.** Corre los hooks y revisa que la salida contenga la
+  postura y la memoria antes de decir que algo quedó activo. Y corrige un error: tras instalar o
+  actualizar **hay que reiniciar Claude Code**; `/reload-plugins` no basta para los hooks.
+- `start` y `close` quedan enteramente en inglés; `arranca` y `cierra`, en español.
+- Licencia coherente en todo el paquete: PolyForm Noncommercial 1.0.0 (manifiesto y ambos READMEs).
+- Tests de los hooks (`hooks/test_hooks.py`).
+
 ## 1.15.0
 - **Prueba de manejo al instalar skills.** La primera vez que instalas algo del catálogo, se te
   ofrece probarlo ahí mismo con **un caso concreto de lo tuyo** — no una explicación. Puedes hacer

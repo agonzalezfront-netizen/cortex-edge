@@ -56,6 +56,12 @@ antes de instalar nada.
 ¿La prefieres dentro de tu Obsidian (o donde sea)? Define la variable de entorno
 `CORTEX_MEMORY_PATH` con esa ruta y el hook la usará en su lugar.
 
+**Qué se carga solo, en cada sesión:** la postura crítica, el protocolo de memoria (qué guardar y
+cómo), tu índice de memoria y, en cada mensaje, la fecha y la hora local, para que "hoy" o "la
+próxima semana" se calculen bien. El hook de memoria avisa cuando el índice se está volviendo
+demasiado largo para cargarse completo. Para apagar el reloj, crea `cortex-edge.json` en tu carpeta
+de memoria con `{"reloj": false}` (`{"idioma": "es"}` carga el núcleo solo en español).
+
 <details>
 <summary>🔄 Cómo actualizar a una versión nueva</summary>
 
@@ -90,9 +96,9 @@ claude plugin update cortex-edge@cortex-edge --scope project
 
 **Y ahora lo importante: aplicar la versión nueva.** Claude Code carga los plugins **al arrancar la
 sesión**, así que tu conversación abierta sigue con la versión vieja aunque el disco ya tenga la
-nueva. Prueba `/reload-plugins` primero; si `/cortex-edge:setup` te sigue mostrando la versión
-anterior, **cierra y vuelve a abrir Claude Code** — el propio CLI avisa *"restart required"* y en un
-cambio de versión suele tener razón.
+nueva. **Cierra y vuelve a abrir Claude Code** después de instalar o actualizar: `/reload-plugins`
+no garantiza que se apliquen los hooks nuevos, y el propio CLI avisa *"restart required"*. Después
+corre `/cortex-edge:setup`: ejecuta los hooks y comprueba que el núcleo de verdad se carga.
 
 Para saber cuál está realmente cargada, pregúntale a tu Claude: *"¿qué versión de cortex-edge tienes
 cargada en esta sesión?"*
@@ -162,7 +168,7 @@ Declarados por adelantado, porque este proyecto le exige a cada feature que decl
 | Necesita | Para qué | Si no lo tienes |
 |---|---|---|
 | **Claude Code** | Cortex Edge es una extensión suya, no una app aparte | No funciona nada |
-| **Python 3** en tu PATH | El hook de memoria es un script de Python | La memoria no carga y no te avisa — el resto sigue funcionando |
+| **Python 3** en tu PATH | Los hooks (memoria, postura crítica, fecha y hora) son scripts de Python | No cargan y no te avisan — los comandos siguen funcionando |
 | **git** | Es como el marketplace baja y actualiza el plugin | Usa la instalación manual por zip |
 
 Tu memoria son archivos Markdown en una carpeta. Nada queda encerrado en una base de datos ni en un
@@ -222,3 +228,11 @@ ayuda (por ejemplo `/start` = `/arranca`, `/close` = `/cierra`).
 ---
 
 *🌱 Cortex Edge crece una feature refinada a la vez.*
+
+## Licencia / License
+
+**ES:** Publicado bajo la licencia [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0): puedes usar, copiar, modificar y compartir este software para cualquier fin **no comercial**. El uso comercial requiere una licencia aparte del autor.
+
+**EN:** Licensed under the [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0): you may use, copy, modify and share this software for any **non-commercial** purpose. Commercial use requires a separate license from the author.
+
+Copyright © 2026 Alberto González.

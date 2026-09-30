@@ -2,13 +2,14 @@
 description: Cierra la sesión — guarda lo importante y deja un handoff para la próxima vez
 ---
 
-Estás cerrando la sesión de trabajo con el usuario. Haz dos cosas antes de terminar:
+Estás cerrando la sesión de trabajo con el usuario. Haz esto antes de terminar:
 
 **1. Guarda en memoria lo que la próxima sesión debería saber.**
 Repasa lo que pasó en esta sesión (decisiones, avances, cosas que cambiaron) y guárdalo siguiendo el
-protocolo de tu CLAUDE.md: decisiones de producto **y su porqué**, features y su estado, feedback de
-autores/usuarios, tareas pendientes, preferencias del usuario. Actualiza notas existentes en vez de
-duplicar. No guardes conversación trivial ni lo que ya está en el código.
+protocolo de memoria cargado al inicio: decisiones **y su porqué**, estado de los proyectos, feedback y
+correcciones de la persona, tareas pendientes, preferencias. Actualiza notas existentes en vez de
+duplicar. No guardes conversación trivial ni lo que ya está en el código. Si durante la sesión la persona
+tuvo que recordarte algo, guárdalo como `feedback` con **Por qué:** y **Cómo aplicarlo:**.
 
 **2. Escribe o actualiza `HANDOFF.md`** en la carpeta de memoria (junto a `MEMORY.md`), con este formato:
 
@@ -28,7 +29,7 @@ duplicar. No guardes conversación trivial ni lo que ya está en el código.
 Sobrescribe el HANDOFF anterior (siempre refleja el estado más reciente).
 
 **3. Confirma al usuario** en una línea: qué guardaste en memoria y que el handoff quedó listo para la
-próxima vez.
+próxima vez. (En inglés: `/cortex-edge:close`.)
 
 ## Principio de UX
 

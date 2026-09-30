@@ -55,6 +55,12 @@ before installing anything.
 Prefer it inside your Obsidian vault (or anywhere else)? Set the `CORTEX_MEMORY_PATH`
 environment variable to that path and the hook will use it instead.
 
+**What loads on its own, every session:** the critical stance, the memory protocol (what to save and
+how), your memory index, and — on every message — today's date and local time, so "today" and "next
+week" are computed right. The memory hook warns when the index is getting too long to load in full.
+To turn the clock off, create `cortex-edge.json` in your memory folder with `{"reloj": false}`
+(`{"idioma": "en"}` loads the core in English only).
+
 <details>
 <summary>🔄 How to update to a new version</summary>
 
@@ -89,9 +95,9 @@ claude plugin update cortex-edge@cortex-edge --scope project
 
 **Now the important part: applying the new version.** Claude Code loads plugins **when the session
 starts**, so your open conversation keeps the old version even though the new one is already on
-disk. Try `/reload-plugins` first; if `/cortex-edge:setup` still shows the older version, **close and
-reopen Claude Code** — the CLI itself warns *"restart required"*, and on a version change it is
-usually right.
+disk. **Close and reopen Claude Code** after installing or updating: `/reload-plugins` doesn't
+guarantee that new hooks are applied, and the CLI itself warns *"restart required"*. Then run
+`/cortex-edge:setup`: it runs the hooks and checks that the core really loads.
 
 To know which one is actually loaded, ask your Claude: *"which cortex-edge version is loaded in this
 session?"*
@@ -160,7 +166,7 @@ itself owes you the same:
 | Needs | Why | Without it |
 |---|---|---|
 | **Claude Code** | Cortex Edge is an extension of it, not a separate app | Nothing works |
-| **Python 3** on your PATH | The memory hook is a Python script | Memory silently won't load — the rest still works |
+| **Python 3** on your PATH | The hooks (memory, critical stance, date and time) are Python scripts | They silently won't load — the commands still work |
 | **git** | How the plugin marketplace fetches and updates | Use the manual zip install instead |
 
 Your memory is plain Markdown files in a folder. Nothing is locked in a database or a proprietary
@@ -218,3 +224,11 @@ Every user-facing text ships in **English and Spanish**. Commands ship language 
 ---
 
 *🌱 Cortex Edge grows one refined feature at a time.*
+
+## License / Licencia
+
+**EN:** Licensed under the [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0): you may use, copy, modify and share this software for any **non-commercial** purpose. Commercial use requires a separate license from the author.
+
+**ES:** Publicado bajo la licencia [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0): puedes usar, copiar, modificar y compartir este software para cualquier fin **no comercial**. El uso comercial requiere una licencia aparte del autor.
+
+Copyright © 2026 Alberto González.
