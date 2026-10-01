@@ -17,8 +17,10 @@ AQUI = pathlib.Path(__file__).resolve().parent
 LIMITE_CLAUDE_CODE = 10_000  # Claude Code truncates a hook's additionalContext beyond this
 
 
-def correr(script, memoria, stdin='{"hook_event_name": "test"}'):
+def correr(script, memoria, stdin='{"hook_event_name": "test"}', temporal=None):
     env = dict(os.environ, CORTEX_MEMORY_PATH=str(memoria), PYTHONIOENCODING="utf-8")
+    if temporal:  # where vigia-sesion.py keeps its per-session state
+        env.update(TEMP=str(temporal), TMP=str(temporal), TMPDIR=str(temporal))
     r = subprocess.run([sys.executable, str(AQUI / script)], input=stdin, capture_output=True,
                        text=True, encoding="utf-8", env=env, timeout=30)
     return r.returncode, r.stdout
@@ -64,6 +66,18 @@ class TestNucleo(Base):
         self.assertIn("Postura crítica", ctx)
         self.assertIn("Protocolo de memoria", ctx)
         self.assertNotIn("Critical stance", ctx)
+
+    def test_ambos_idiomas_caben_sin_truncar(self):
+        # Without a known language both sections load; the last line of the ES protocol must arrive whole.
+        ctx = self.contexto("cargar-nucleo.py", "SessionStart")
+        self.assertLess(len(ctx), 9500)
+        self.assertTrue(ctx.rstrip().endswith("sin jerga innecesaria."))
+
+    def test_pensar_vs_ejecutar_y_honestidad(self):
+        ctx = self.contexto("cargar-nucleo.py", "SessionStart")
+        for esperado in ("Think vs. execute", "Pensar vs. ejecutar", "No objective judge", "Sin juez objetivo",
+                         "Opus > Fable", "not verified", "sin verificar"):
+            self.assertIn(esperado, ctx)
 
     def test_idioma_por_config(self):
         (self.mem / "cortex-edge.json").write_text('{"idioma": "en"}', encoding="utf-8")
@@ -127,12 +141,101 @@ class TestReloj(Base):
         self.assertIn(datetime.now().strftime("%Y-%m-%d"), self.contexto("reloj.py", "UserPromptSubmit"))
 
 
+def transcript(ruta, contexto, sidechain_final=False):
+    """Synthetic transcript: one main-session call with `contexto` tokens (and optionally a bigger subagent call)."""
+    filas = [
+        {"type": "user", "message": {"content": "hola"}},
+        {"type": "assistant", "message": {"usage": {"input_tokens": 10, "cache_read_input_tokens": contexto - 10,
+                                                    "output_tokens": 5}}},
+    ]
+    if sidechain_final:
+        filas.append({"type": "assistant", "isSidechain": True,
+                      "message": {"usage": {"cache_read_input_tokens": 900_000}}})
+    pathlib.Path(ruta).write_text("\n".join(json.dumps(f) for f in filas) + "\n", encoding="utf-8")
+
+
+class TestVigia(Base):
+    def setUp(self):
+        super().setUp()
+        self.tmp = pathlib.Path(tempfile.mkdtemp())
+
+    def tearDown(self):
+        super().tearDown()
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def turno(self, sesion="s1", transcript_path=""):
+        stdin = json.dumps({"session_id": sesion, "transcript_path": transcript_path, "prompt": "x"})
+        rc, out = correr("vigia-sesion.py", self.mem, stdin=stdin, temporal=self.tmp)
+        self.assertEqual(rc, 0)
+        if not out.strip():
+            return ""
+        ctx = json.loads(out)["hookSpecificOutput"]["additionalContext"]
+        self.assertEqual(json.loads(out)["hookSpecificOutput"]["hookEventName"], "UserPromptSubmit")
+        return ctx
+
+    def config(self, **kw):
+        (self.mem / "cortex-edge.json").write_text(json.dumps(kw), encoding="utf-8")
+
+    def test_recordatorio_cada_n_sin_guardar(self):
+        self.config(recordatorio_guardado=3, tope_contexto=False)
+        self.assertEqual(self.turno(), "")
+        self.assertEqual(self.turno(), "")
+        self.assertIn("💾", self.turno())          # 3rd message, nothing saved
+        self.assertEqual(self.turno(), "")
+
+    def test_si_guardo_no_recuerda(self):
+        self.config(recordatorio_guardado=2, tope_contexto=False)
+        self.turno()
+        (self.mem / "decision-x.md").write_text("---\ntype: project\n---\nx", encoding="utf-8")
+        self.assertEqual(self.turno(), "")          # a memory was written during the stretch
+
+    def test_sesiones_separadas(self):
+        self.config(recordatorio_guardado=2, tope_contexto=False)
+        self.turno("a")
+        self.assertEqual(self.turno("b"), "")       # counters don't mix across sessions
+        self.assertIn("💾", self.turno("a"))
+
+    def test_tope_de_contexto(self):
+        self.config(recordatorio_guardado=False)
+        t = self.tmp / "t.jsonl"
+        transcript(t, 520_000)
+        ctx = self.turno(transcript_path=str(t))
+        self.assertIn("📏", ctx)
+        self.assertIn("520", ctx)
+        self.assertEqual(self.turno(transcript_path=str(t)), "")   # doesn't repeat every message
+
+    def test_bajo_el_tope_y_subagentes_no_cuentan(self):
+        self.config(recordatorio_guardado=False)
+        t = self.tmp / "t.jsonl"
+        transcript(t, 120_000, sidechain_final=True)   # the 900k subagent call is not this session's context
+        self.assertEqual(self.turno(transcript_path=str(t)), "")
+
+    def test_tope_configurable(self):
+        self.config(recordatorio_guardado=False, tope_contexto=100_000)
+        t = self.tmp / "t.jsonl"
+        transcript(t, 120_000)
+        self.assertIn("📏", self.turno(transcript_path=str(t)))
+
+    def test_todo_apagado(self):
+        self.config(recordatorio_guardado=False, tope_contexto=False)
+        for _ in range(3):
+            self.assertEqual(self.turno(), "")
+
+    def test_idioma(self):
+        self.config(recordatorio_guardado=1, tope_contexto=False, idioma="es")
+        ctx = self.turno()
+        self.assertIn("Llevas 1 mensajes", ctx)
+        self.assertNotIn("messages into", ctx)
+
+
 class TestNuncaRompe(Base):
     def test_stdin_basura_y_vacio(self):
-        for script in ("cargar-nucleo.py", "cargar-memoria.py", "reloj.py"):
-            for entrada in ("", "no es json"):
-                rc, _ = correr(script, self.mem, stdin=entrada)
+        tmp = tempfile.mkdtemp()
+        for script in ("cargar-nucleo.py", "cargar-memoria.py", "reloj.py", "vigia-sesion.py"):
+            for entrada in ("", "no es json", "[]", '{"transcript_path": "/no/existe.jsonl"}'):
+                rc, _ = correr(script, self.mem, stdin=entrada, temporal=tmp)
                 self.assertEqual(rc, 0, script)
+        shutil.rmtree(tmp, ignore_errors=True)
 
 
 if __name__ == "__main__":

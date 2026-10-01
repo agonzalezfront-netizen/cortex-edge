@@ -7,18 +7,24 @@ Estás iniciando una sesión de trabajo con el usuario. Ayúdale a retomar sin r
 1. Ubica la carpeta de memoria del usuario: la misma que carga el hook al inicio, donde está `MEMORY.md`.
    Su ruta aparece en el contexto cargado al inicio ("Carpeta de memoria"); si no, es
    `$CORTEX_MEMORY_PATH` o, por defecto, `~/.claude/cortex-memory/`.
-2. Busca ahí un archivo `HANDOFF.md`. Si existe, léelo completo.
-3. Resume al usuario en lenguaje claro (sin jerga):
+2. Busca ahí un archivo `HANDOFF.md`. Si existe, léelo completo, empezando por el bloque **Estado
+   vigente al cierre** (qué · por qué · dónde · qué falta · primer paso).
+3. **Contrasta antes de narrar.** El handoff es una foto del cierre; desde entonces pueden haber
+   cambiado cosas. Comprueba lo barato de comprobar (que los archivos o la carpeta de "Dónde" existan,
+   el estado del repositorio si lo hay) y marca lo que no pudiste comprobar como *"según el handoff,
+   sin verificar"*. Lo que el handoff dejó en ⚠️ sigue sin verificar hasta que alguien lo compruebe.
+4. Resume al usuario en lenguaje claro (sin jerga):
    - **Dónde quedamos:** el estado vigente de la última sesión.
-   - **Pendientes:** lo que quedó por hacer, con su contexto.
-   - **Próximo paso sugerido:** por dónde conviene seguir hoy.
-4. **¿Ya le mostraste qué puede hacer?** La señal NO es cuánta memoria tiene — alguien puede llevar
+   - **Pendientes:** lo que quedó por hacer, con su contexto, incluido lo que quedó sin verificar.
+   - **Próximo paso sugerido:** por dónde conviene seguir hoy (el "primer paso" del handoff, salvo
+     que lo que comprobaste diga otra cosa).
+5. **¿Ya le mostraste qué puede hacer?** La señal NO es cuánta memoria tiene — alguien puede llevar
    semanas guardando cosas sin que nadie le haya explicado nunca los comandos. La señal es un
    recuerdo marcador: busca en la carpeta de memoria un archivo `cortex-edge-recorrido.md`.
 
    **Si NO existe** → todavía no vio el recorrido. Dos casos:
 
-   - **Memoria vacía o casi** (recién instaló): hazle el recorrido completo del punto 5, sin preguntar.
+   - **Memoria vacía o casi** (recién instaló): hazle el recorrido completo del punto 6, sin preguntar.
    - **Ya tiene recuerdos** (venía usándolo sin que nadie le explicara): **ofrécelo, no lo impongas**.
 
      > Por cierto, veo que ya vienes usándome pero creo que nunca te mostré todo lo que puedes
@@ -30,9 +36,9 @@ Estás iniciando una sesión de trabajo con el usuario. Ayúdale a retomar sin r
    `cortex-edge-recorrido.md` de tipo `reference` diciendo que ya se le presentó, con la fecha.
    Así no se lo repites nunca más. Formato en `/cortex-edge:memoria`.
 
-   **Si el marcador existe** → salta al punto 6. No repitas la presentación.
+   **Si el marcador existe** → salta al punto 7. No repitas la presentación.
 
-5. **El recorrido.**
+6. **El recorrido.** Nombra solo comandos que existan en esta instalación (míralo antes).
 
    **a) Demuestra primero, explica después.** Si hay algún recuerdo suyo, úsalo como prueba viva:
 
@@ -68,12 +74,25 @@ Estás iniciando una sesión de trabajo con el usuario. Ayúdale a retomar sin r
    Si elige **2**, pregúntale en qué quiere trabajar. Si elige **1**, sigue con
    `/cortex-edge:skills`. **Nunca insistas.**
 
-6. **Si no hay `HANDOFF.md`** pero ya conoce el producto: dilo en una línea, recuérdale que
+7. **Si no hay `HANDOFF.md`** pero ya conoce el producto: dilo en una línea, recuérdale que
    `/cortex-edge:cierra` deja el resumen para la próxima, y pregúntale en qué trabaja hoy.
 
 No inventes estado: si el HANDOFF no menciona algo, no lo asumas. La memoria (MEMORY.md) ya se cargó
 sola al inicio — este comando la complementa con el "dónde quedamos" del último cierre. (En inglés:
 `/cortex-edge:start`.)
+
+## Arranque liviano: un script, un informe corto
+
+Si la persona tiene chequeos que corre al empezar (tests, servicios, el estado de algo), no los corras
+como diez comandos sueltos que vuelcan bitácoras en el contexto: cada línea que entra se relee en
+**todos** los mensajes siguientes. La práctica que rinde es **un solo script** que corre todos los
+chequeos y devuelve un informe compacto, una línea por chequeo con su veredicto (`OK` · `AVISO` ·
+`FALLA` y, si falla, el porqué en una frase). Tú lees veredictos, no bitácoras, y abres el detalle solo
+de lo que falló. Si ves que la persona repite el mismo ritual de arranque a mano, ofrécele armar ese
+script.
+
+**Sesión nueva tras un handoff es lo normal**, no una pérdida: el handoff es el puente. Una sesión que
+ya arrastra un contexto enorme cuesta más en cada mensaje que una nueva que lee el handoff.
 
 ## Principio de UX
 

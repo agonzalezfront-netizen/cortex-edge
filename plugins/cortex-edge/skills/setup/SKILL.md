@@ -95,6 +95,7 @@ hooks tal como los corre Claude Code y **mira lo que devuelven**:
 python "${CLAUDE_PLUGIN_ROOT}/hooks/cargar-nucleo.py" < /dev/null
 python "${CLAUDE_PLUGIN_ROOT}/hooks/cargar-memoria.py" < /dev/null
 python "${CLAUDE_PLUGIN_ROOT}/hooks/reloj.py" < /dev/null
+echo '{"session_id": "setup-check"}' | python "${CLAUDE_PLUGIN_ROOT}/hooks/vigia-sesion.py"; echo "exit $?"
 ```
 
 (En PowerShell, en vez de `< /dev/null` usa `'' | python "…"`. Si `python` no existe pero
@@ -105,8 +106,9 @@ python "${CLAUDE_PLUGIN_ROOT}/hooks/reloj.py" < /dev/null
 | `cargar-nucleo.py` | JSON con `hookSpecificOutput.additionalContext` que contiene **"Postura crítica"** o **"Critical stance"**, y **"Protocolo de memoria"** o **"Memory protocol"** |
 | `cargar-memoria.py` | JSON cuyo `additionalContext` contiene **"TU MEMORIA"** o **"YOUR MEMORY"** |
 | `reloj.py` | JSON con la fecha de hoy — o vacío si la persona apagó el reloj (ver abajo) |
+| `vigia-sesion.py` | `exit 0`, normalmente **sin salida**: solo habla cuando toca recordar guardar o la sesión pasó el tope de contexto. Vacío aquí es lo correcto |
 
-- **Si las tres salen bien** → la verificación pasó. Recuerda qué pasó, para el paso 3.
+- **Si las cuatro salen bien** → la verificación pasó. Recuerda qué pasó, para el paso 3.
 - **Si alguna sale vacía o con error** → **no digas que está listo**. Muestra el error en una
   línea, explica qué deja de funcionar (sin núcleo: no te va a cuestionar ni a guardar recuerdos
   por su cuenta; sin memoria: cada sesión empieza en blanco) y resuélvelo dentro de este paso.
@@ -126,13 +128,18 @@ En la carpeta de memoria puede existir un archivo `cortex-edge.json`. Si no exis
 valores por defecto. Menciónalo solo si la persona pregunta o si le molesta algo de esto:
 
 ```json
-{ "reloj": false, "idioma": "es" }
+{ "reloj": false, "idioma": "es", "recordatorio_guardado": 20, "tope_contexto": 500000 }
 ```
 
 - **`reloj`** — por defecto, en cada mensaje se agrega una línea con el día, la fecha y la hora
   local, para que "hoy", "mañana" o "hace una semana" se calculen bien. `false` lo apaga.
 - **`idioma`** — `"es"` o `"en"`: el núcleo se carga solo en ese idioma (ocupa la mitad). Si no
   está, se usa el recuerdo `prefiere-idioma-*.md` que guardas en el paso 1; sin ninguno, van ambos.
+- **`recordatorio_guardado`** — cada cuántos mensajes, si no se guardó nada en la memoria, se recuerda
+  guardar lo importante sin esperar al cierre (por defecto 20). `false` lo apaga.
+- **`tope_contexto`** — cuando el contexto de la sesión pasa de este número de tokens (por defecto
+  500 000), se avisa que en el próximo cierre natural conviene cerrar con handoff y seguir en una sesión
+  nueva. Con modelos de ventana de 200 000 conviene bajarlo (p. ej. 150 000). `false` lo apaga.
 
 ## Paso 3 de 4 — Listo: qué queda activo
 
@@ -147,6 +154,8 @@ puede hacer con eso. Ejemplo de tono y largo:
 > • **Memoria** — lo que guardemos se carga solo al empezar cada sesión, en `~/.claude/cortex-memory/`
 > • **Postura crítica** — te voy a cuestionar cuando vea un problema, no a darte la razón siempre
 > • **Fecha y hora** — sé qué día y qué hora es en cada mensaje (se puede apagar)
+> • **Vigía de la sesión** — te recuerdo guardar lo importante y aviso cuando la sesión crece tanto
+>   que conviene seguir en una nueva
 > • **Continuidad** — `/cortex-edge:cierra` deja un resumen y `/cortex-edge:arranca` lo retoma
 >
 > **Ya tienes tu primer recuerdo guardado:** que prefieres el español. En tu próxima sesión lo voy a

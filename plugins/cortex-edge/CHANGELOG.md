@@ -9,6 +9,54 @@ Those findings are marked 👤.
 
 ---
 
+## 1.17.0 — 2026-10-01 · continuidad y rigor / continuity and rigor
+- **El handoff abre con el estado vigente.** `cierra` deja arriba un bloque fijo (qué · por qué ·
+  dónde · qué falta · primer paso) y una sección **verificado / sin verificar**: nada va como hecho sin
+  evidencia. `arranca` lee ese bloque primero y **lo contrasta con la fuente** antes de contarlo como
+  estado actual; lo que no pudo comprobar lo dice ("según el handoff, sin verificar").
+- **Cerrar apaga lo que quedó corriendo.** Procesos en segundo plano, monitores, tareas programadas o
+  en bucle que la sesión lanzó: si ya no hacen falta, se detienen (cada uno puede despertar al modelo y
+  gastar tokens después del cierre). Lo que ya existía antes no se toca.
+- **Cada lección, a `feedback`.** Si hubo que corregir o recordarle algo a Claude, o un error costó
+  una vuelta, se guarda con **Por qué** y **Cómo aplicarlo**, y si puede repetirse se ofrece una guarda
+  que no dependa de acordarse (un test, un chequeo).
+- **Vigía de la sesión** (hook nuevo, `vigia-sesion.py`). Habla solo con motivo: si pasan 20 mensajes
+  sin guardar nada en la memoria, recuerda guardar lo importante **ahora**, no al cierre; y si el
+  contexto de la sesión pasa el **tope de 500 mil tokens**, avisa que en el próximo cierre natural
+  conviene cerrar con handoff y seguir en una sesión nueva. Nunca esperar la compactación automática.
+  Ambos se ajustan o se apagan en `cortex-edge.json` (`recordatorio_guardado`, `tope_contexto`).
+- **Dos reglas nuevas en la postura del núcleo:** *honestidad sobre lo no verificado* (decir "listo"
+  solo con evidencia) y *pensar vs. ejecutar* (la sesión principal piensa, decide y verifica; lo
+  mecánico con juez objetivo va a un script o a un subagente con modelo menor, en este orden: script
+  determinista > Haiku > Sonnet > Opus > Fable).
+- **Nuevo `/cortex-edge:tokens`** — dónde se van tus tokens, medido desde tus transcripts locales (los
+  de subagentes incluidos): por día, modelo, qué despertó al modelo y sesión, con el contexto que se
+  relee en cada mensaje. Solo números; nunca muestra el contenido de los mensajes ni envía nada.
+- **Nuevo `/cortex-edge:rigor`** — evidencia antes de "listo": matriz requisito → evidencia,
+  inventario completo de lo anómalo, lo medido separado de lo supuesto.
+- **Arranque liviano**, documentado en `arranca`: los chequeos de inicio van en un solo script que
+  devuelve un veredicto por línea (OK · AVISO · FALLA); Claude lee veredictos, no bitácoras.
+- La vía manual (`features/`) ahora se **genera desde el plugin** al publicar: ya no puede quedar
+  atrasada respecto de `arranca`, `cierra`, `start` y `close`.
+
+**Anticipo de la 1.18 — memoria que se ordena.** Una memoria grande crece en islas. Esta es una real,
+de unas 4.500 notas, en el grafo de Obsidian:
+
+| Antes (30-09) | Durante (01-10) |
+|---|---|
+| ![Antes: islas y notas sueltas](https://raw.githubusercontent.com/agonzalezfront-netizen/cortex-edge/master/plugins/cortex-edge/docs/grafo-antes-2026-09-30.png) | ![Durante: coloreado por tema, islas conectándose](https://raw.githubusercontent.com/agonzalezfront-netizen/cortex-edge/master/plugins/cortex-edge/docs/grafo-durante-2026-10-01.png) |
+
+**Después**, medido con los datos del propio Obsidian: **4.466 notas, 0 huérfanas, 4.155 de 4.156
+adjuntos enlazados**. El método se está preparando para la 1.18.
+
+*In English:* the handoff now opens with a fixed current-state block plus verified / not-verified
+lists, and `start` checks it against the source before narrating it; closing stops what the session
+left running; every lesson becomes `feedback`; a new session watcher reminds Claude to save memory
+and flags sessions over a 500k-token context ceiling (hand over at the next natural stopping point,
+never wait for automatic compaction); the core stance adds *honesty about what isn't verified* and
+*think vs. execute*; new `/cortex-edge:tokens` and `/cortex-edge:rigor`. Preview of 1.18: memory that
+tidies itself (graph before and during above).
+
 ## 1.16.0 — 2026-09-30 · el núcleo funciona de verdad / the core really works
 - **La postura crítica y el protocolo de memoria ahora llegan al modelo en la instalación por
   plugin.** Antes el hook solo inyectaba `MEMORY.md`: la postura y el protocolo (qué guardar,

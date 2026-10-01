@@ -1,5 +1,5 @@
 ---
-description: Cierra la sesión — guarda lo importante y deja un handoff para la próxima vez
+description: Cierra la sesión — guarda lo importante, apaga lo que quedó corriendo y deja un handoff con el estado vigente
 ---
 
 Estás cerrando la sesión de trabajo con el usuario. Haz esto antes de terminar:
@@ -8,28 +8,53 @@ Estás cerrando la sesión de trabajo con el usuario. Haz esto antes de terminar
 Repasa lo que pasó en esta sesión (decisiones, avances, cosas que cambiaron) y guárdalo siguiendo el
 protocolo de memoria cargado al inicio: decisiones **y su porqué**, estado de los proyectos, feedback y
 correcciones de la persona, tareas pendientes, preferencias. Actualiza notas existentes en vez de
-duplicar. No guardes conversación trivial ni lo que ya está en el código. Si durante la sesión la persona
-tuvo que recordarte algo, guárdalo como `feedback` con **Por qué:** y **Cómo aplicarlo:**.
+duplicar. No guardes conversación trivial ni lo que ya está en el código.
 
-**2. Escribe o actualiza `HANDOFF.md`** en la carpeta de memoria (junto a `MEMORY.md`), con este formato:
+**2. Cada lección, a `feedback`.** Si durante la sesión la persona tuvo que recordarte o corregirte algo,
+o un error tuyo costó una vuelta, guárdalo como `feedback` con **Por qué:** (qué falló) y **Cómo
+aplicarlo:** (qué harás distinto). Si puede repetirse, anota también qué **guarda** lo evitaría sin
+depender de acordarse (un test, un chequeo en un script) y ofrécela.
+
+**3. Apaga lo que esta sesión dejó corriendo.** Procesos en segundo plano, monitores, tareas
+programadas o en bucle, servidores de desarrollo, observadores de archivos: si los lanzaste **tú en esta
+sesión** y ya no hacen falta, detenlos. Cada uno que sigue vivo puede despertar al modelo y gastar
+tokens después de cerrada la sesión. **No toques** lo que ya existía antes de la sesión ni los servicios
+del sistema. Si algo debe quedar corriendo a propósito, dilo en el handoff con su porqué.
+
+**4. Escribe o actualiza `HANDOFF.md`** en la carpeta de memoria (junto a `MEMORY.md`). Abre con el
+bloque de **estado vigente**: es lo primero que leerá la próxima sesión.
 
 ```markdown
-# HANDOFF — <fecha de hoy>
+# HANDOFF — <fecha y hora de hoy>
 
-## Dónde quedamos
-<en qué se estaba trabajando y por qué — el estado vigente real al cerrar>
+## Estado vigente al cierre
+- **Qué:** <en qué se estaba trabajando, en una o dos frases>
+- **Por qué:** <para qué; la decisión o el objetivo detrás>
+- **Dónde:** <archivos, carpeta, rama, URL: lo necesario para encontrarlo sin buscar>
+- **Qué falta:** <lo que queda para darlo por terminado>
+- **Primer paso:** <la primera acción concreta para la próxima sesión>
+
+## Verificado y sin verificar
+- ✅ <lo que se comprobó, con qué: test, comando, archivo>
+- ⚠️ <lo que NO se comprobó y por qué>
 
 ## Pendientes
 - <lo que falta, con contexto suficiente para retomarlo>
 
-## Próximo paso
-<la primera acción concreta para la próxima sesión>
+## Quedó corriendo (si aplica)
+- <proceso o tarea que sigue vivo a propósito, y por qué>
 ```
 
-Sobrescribe el HANDOFF anterior (siempre refleja el estado más reciente).
+Sobrescribe el HANDOFF anterior (siempre refleja el estado más reciente). **Honestidad:** nada va en
+✅ sin evidencia; lo que no verificaste va en ⚠️, aunque creas que funciona.
 
-**3. Confirma al usuario** en una línea: qué guardaste en memoria y que el handoff quedó listo para la
-próxima vez. (En inglés: `/cortex-edge:close`.)
+**5. Si la sesión ya es grande, este cierre es el traspaso.** Si apareció el aviso 📏 de tope de
+contexto (o la sesión lleva muchas horas y vueltas), dilo: la siguiente tarea conviene empezarla en
+una **sesión nueva** con `/cortex-edge:arranca`, que lee este handoff. No esperes la compactación
+automática: resume a ciegas lo que este handoff elige con criterio.
+
+**6. Confirma al usuario** en pocas líneas: qué guardaste en memoria, qué apagaste, qué quedó sin
+verificar, y que el handoff quedó listo. (En inglés: `/cortex-edge:close`.)
 
 ## Principio de UX
 

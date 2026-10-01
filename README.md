@@ -40,6 +40,8 @@ Then use it:
 | `/cortex-edge:memoria` | Save something to persistent memory |
 | `/cortex-edge:skills` | Browse the catalog and install the skills that fit your work |
 | `/cortex-edge:obsidian` | Connect your memory to Obsidian to browse it as notes (optional) |
+| `/cortex-edge:rigor` | Evidence before "done": requirement-by-requirement check and an honest list of what wasn't verified |
+| `/cortex-edge:tokens` | See where your tokens go: by day, model, what woke the model up, and session |
 | `/cortex-edge:setup` | Check everything is ready and offer to install what's missing |
 
 > **If `/reload-plugins` reports `0 skills`, nothing is wrong.** That counter only looks at
@@ -55,11 +57,19 @@ before installing anything.
 Prefer it inside your Obsidian vault (or anywhere else)? Set the `CORTEX_MEMORY_PATH`
 environment variable to that path and the hook will use it instead.
 
-**What loads on its own, every session:** the critical stance, the memory protocol (what to save and
-how), your memory index, and — on every message — today's date and local time, so "today" and "next
-week" are computed right. The memory hook warns when the index is getting too long to load in full.
-To turn the clock off, create `cortex-edge.json` in your memory folder with `{"reloj": false}`
-(`{"idioma": "en"}` loads the core in English only).
+**What loads on its own, every session:** the critical stance (including *honesty about what isn't
+verified* and *think vs. execute*), the memory protocol (what to save and how), your memory index, and
+— on every message — today's date and local time, so "today" and "next week" are computed right. The
+memory hook warns when the index is getting too long to load in full.
+
+**A session watcher** speaks up only when there's a reason: if 20 messages go by without anything saved
+to memory, it reminds Claude to save what matters now instead of waiting for the close; and when the
+session's context passes the ceiling (see *Long sessions* below), it says it's time to hand over at
+the next natural stopping point.
+
+Everything is optional, via `cortex-edge.json` in your memory folder: `{"reloj": false}` turns the
+clock off, `{"idioma": "en"}` loads the core in English only, `{"recordatorio_guardado": 30}` or
+`false` tunes the save reminder, `{"tope_contexto": 150000}` or `false` tunes the context ceiling.
 
 <details>
 <summary>🔄 How to update to a new version</summary>
@@ -120,6 +130,9 @@ Prefer to install by hand, or want just one piece? Download a zip and let your C
 3. **Full** → [`dist/cortex-edge-full.zip`](dist/cortex-edge-full.zip).
 
 Unzip it, open Claude Code inside the folder, and say *"run the install prompt inside"*.
+
+The manual install brings the core and the continuity commands; the session watcher, `rigor` and
+`tokens` come only with the plugin.
 </details>
 
 ---
@@ -130,7 +143,7 @@ Unzip it, open Claude Code inside the folder, and say *"run the install prompt i
 
 | | Which ones | Do you install them? |
 |---|---|---|
-| 🌱 **Cortex Edge's own** | `arranca` · `cierra` · `memoria` · `setup` · `skills` · `start` · `close` | **No.** They ship inside the plugin. Installing it gives you all of them, and they update with it |
+| 🌱 **Cortex Edge's own** | `arranca` · `cierra` · `start` · `close` · `memoria` · `setup` · `skills` · `obsidian` · `rigor` · `tokens` | **No.** They ship inside the plugin. Installing it gives you all of them, and they update with it |
 | 🧰 **From the catalog** | superpowers, document writing, research, design, video… | **Yes, and they're optional.** Written by third parties. `/cortex-edge:skills` helps you pick and install only the ones that fit you |
 
 **Why the difference matters:** the built-in ones *are* Cortex Edge and depend on nothing else. The
@@ -147,7 +160,40 @@ Every Cortex Edge install ships a **core** that does not depend on any feature:
   "remember" what came before instead of starting from zero every time.
 - **Critical stance** (`core/POSTURA-CRITICA.md`) — Cortex is a rigorous partner, not a yes-man: it
   questions ideas, flags gaps and proposes better alternatives. This applies to every idea, plan or
-  decision — it is not tied to any feature.
+  decision — it is not tied to any feature. It also carries two working rules: **honesty about what
+  isn't verified** (no "done" without evidence) and **think vs. execute** (below).
+
+## Long sessions: think vs. execute, and the context ceiling
+
+Measured on real usage, not guessed: when output is around 1 % of the tokens, the spend isn't
+reasoning — it's a big context **re-read on every message**, plus automatic wake-ups re-reading it
+again. A cheaper model is the small lever; a smaller context is the big one.
+
+- **Think vs. execute.** The main session is for thinking: deciding, judging, verifying. Repetitive,
+  mechanical work that has an **objective judge** (a test, a script, a checker) goes elsewhere, in this
+  order: deterministic script (zero tokens) > Haiku subagent > Sonnet > Opus > Fable. No objective
+  judge, no delegation.
+- **Context ceiling.** When a live session passes **500k tokens of context**, don't cut the current
+  task short: at the next natural stopping point, close with `/cortex-edge:close` (handoff with the
+  current state) and continue in a fresh session with `/cortex-edge:start`. **Never wait for automatic
+  compaction**: it summarizes blindly what a handoff chooses with judgment. With a 200k context window,
+  lower the ceiling.
+- **Light startup.** If you run checks when you start, put them in one script that prints one verdict
+  per line (`OK` · `WARN` · `FAIL`): Claude reads verdicts, not logs.
+- **Measure it.** `/cortex-edge:tokens` reads your local transcripts (subagents included) and tells you
+  where the tokens went. Numbers only — it never prints message contents or sends anything.
+
+## Coming next: memory that tidies itself (preview of 1.18)
+
+A large memory grows into islands: notes nobody links to, attachments nobody can find. This is a real
+memory of about 4,500 notes, before and during tidying, as Obsidian's graph shows it:
+
+| Before (2026-09-30): islands and loose notes | During (2026-10-01): colored by topic, islands connecting |
+|---|---|
+| ![Memory graph before tidying](https://raw.githubusercontent.com/agonzalezfront-netizen/cortex-edge/master/plugins/cortex-edge/docs/grafo-antes-2026-09-30.png) | ![Memory graph during tidying](https://raw.githubusercontent.com/agonzalezfront-netizen/cortex-edge/master/plugins/cortex-edge/docs/grafo-durante-2026-10-01.png) |
+
+**After**, measured with Obsidian's own data: **4,466 notes, 0 orphans, 4,155 of 4,156 attachments
+linked**. The method behind it is being prepared for version 1.18.
 
 ## Catalog (optional features)
 
@@ -166,7 +212,7 @@ itself owes you the same:
 | Needs | Why | Without it |
 |---|---|---|
 | **Claude Code** | Cortex Edge is an extension of it, not a separate app | Nothing works |
-| **Python 3** on your PATH | The hooks (memory, critical stance, date and time) are Python scripts | They silently won't load — the commands still work |
+| **Python 3** on your PATH | The hooks (memory, critical stance, date and time, session watcher) and `tokens` are Python scripts | They silently won't load — the commands still work |
 | **git** | How the plugin marketplace fetches and updates | Use the manual zip install instead |
 
 Your memory is plain Markdown files in a folder. Nothing is locked in a database or a proprietary

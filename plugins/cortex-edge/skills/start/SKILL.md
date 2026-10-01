@@ -7,18 +7,24 @@ You are starting a work session. Help the user pick up without re-reading everyt
 1. Find the user's memory folder: the one the SessionStart hook loads, where `MEMORY.md` lives. Its
    path appears in the context loaded at startup ("Memory folder"); otherwise it's
    `$CORTEX_MEMORY_PATH`, or `~/.claude/cortex-memory/` by default.
-2. Look for `HANDOFF.md` there. If it exists, read it in full.
-3. Summarize in plain language:
+2. Look for `HANDOFF.md` there. If it exists, read it in full, starting with the **Current state at
+   close** block (what · why · where · what's left · first step).
+3. **Check before narrating.** The handoff is a snapshot of the close; things may have changed since.
+   Check what's cheap to check (that the files or folder under "Where" exist, the repository status if
+   there is one) and mark what you couldn't check as *"per the handoff, not verified"*. Whatever the
+   handoff left under ⚠️ stays unverified until someone checks it.
+4. Summarize in plain language:
    - **Where we left off:** the current state from the last session.
-   - **Pending:** what's left, with context.
-   - **Suggested next step:** where to continue today.
-4. **Have you shown them what they can do yet?** The signal is NOT how much memory they have: someone
+   - **Pending:** what's left, with context, including what was left unverified.
+   - **Suggested next step:** where to continue today (the handoff's "first step", unless what you
+     checked says otherwise).
+5. **Have you shown them what they can do yet?** The signal is NOT how much memory they have: someone
    may have been saving things for weeks without anyone ever explaining the commands. The signal is a
    marker memory: look in the memory folder for a file named `cortex-edge-recorrido.md`.
 
    **If it does NOT exist** → they haven't had the tour yet. Two cases:
 
-   - **Empty or nearly empty memory** (just installed): give the full tour in step 5, without asking.
+   - **Empty or nearly empty memory** (just installed): give the full tour in step 6, without asking.
    - **They already have memories** (they've been using it without anyone explaining): **offer it,
      don't impose it**.
 
@@ -31,9 +37,9 @@ You are starting a work session. Help the user pick up without re-reading everyt
    `cortex-edge-recorrido.md` of type `reference` saying they've been shown the tour, with the date.
    That way you never repeat it. Format in `/cortex-edge:memoria`.
 
-   **If the marker exists** → skip to step 6. Don't repeat the introduction.
+   **If the marker exists** → skip to step 7. Don't repeat the introduction.
 
-5. **The tour.**
+6. **The tour.** Only name commands that exist in this install (check first).
 
    **a) Show first, explain after.** If there's any memory of theirs, use it as live proof:
 
@@ -70,12 +76,24 @@ You are starting a work session. Help the user pick up without re-reading everyt
    If they pick **2**, ask what they want to work on. If they pick **1**, continue with
    `/cortex-edge:skills`. **Never insist.**
 
-6. **If there's no `HANDOFF.md`** but they already know the product: say so in one line, remind them
+7. **If there's no `HANDOFF.md`** but they already know the product: say so in one line, remind them
    that `/cortex-edge:close` leaves the summary for next time, and ask what they're working on today.
 
 Don't invent state: if the handoff doesn't mention something, don't assume it. Memory (`MEMORY.md`)
 already loaded at startup — this command adds the "where we left off" from the last close. (Spanish:
 `/cortex-edge:arranca`.)
+
+## Light startup: one script, one short report
+
+If the person has checks they run when starting (tests, services, the state of something), don't run
+them as ten separate commands dumping logs into the context: every line that comes in is re-read on
+**every** message after it. The practice that pays off is **a single script** that runs all the checks
+and returns a compact report, one line per check with its verdict (`OK` · `WARN` · `FAIL` and, when it
+fails, the why in one sentence). You read verdicts, not logs, and open the detail only for what failed.
+If you see the person repeating the same startup ritual by hand, offer to build that script.
+
+**A fresh session after a handoff is normal**, not a loss: the handoff is the bridge. A session already
+dragging a huge context costs more on every message than a new one that reads the handoff.
 
 ## UX principles
 
